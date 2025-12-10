@@ -53,11 +53,21 @@ npm run dev
 
 Приложение запускается на `http://localhost:3000`
 
+## Запуск backend (разработка)
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Сервер запускается на `http://localhost:5000`
+
 ## Статус разработки
 
 - [x] Инициализация структуры проекта
 - [x] Настройка frontend (Vite + React)
-- [ ] Настройка backend (Express)
+- [x] Настройка backend (Express)
 - [ ] Подключение базы данных
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров
