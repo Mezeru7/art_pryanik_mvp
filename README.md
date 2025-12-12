@@ -19,6 +19,9 @@ art-pryanik/
 │   └── src/
 │       ├── api/             # Роуты и контроллеры
 │       └── config/          # Конфигурация backend
+├── .editorconfig
+├── .prettierrc
+├── .prettierignore
 ├── .gitignore
 └── README.md
 ```
@@ -42,6 +45,20 @@ art-pryanik/
 - Авторизация
 - Профиль пользователя
 - Административная панель
+
+## Линтинг и форматирование
+
+```bash
+# frontend
+cd frontend
+npm run lint
+npm run format
+
+# backend
+cd backend
+npm run lint
+npm run format
+```
 
 ## Запуск frontend (разработка)
 
@@ -68,6 +85,7 @@ npm run dev
 - [x] Инициализация структуры проекта
 - [x] Настройка frontend (Vite + React)
 - [x] Настройка backend (Express)
+- [x] ESLint, Prettier, EditorConfig
 - [ ] Подключение базы данных
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров
