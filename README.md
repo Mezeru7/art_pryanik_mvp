@@ -60,6 +60,15 @@ npm run lint
 npm run format
 ```
 
+## Запуск через Docker (разработка)
+
+```bash
+docker-compose up --build
+```
+
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:5000`
+
 ## Запуск frontend (разработка)
 
 ```bash
@@ -86,6 +95,7 @@ npm run dev
 - [x] Настройка frontend (Vite + React)
 - [x] Настройка backend (Express)
 - [x] ESLint, Prettier, EditorConfig
+- [x] Docker (docker-compose для разработки)
 - [ ] Подключение базы данных
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров
