@@ -96,6 +96,7 @@ npm run dev
 - [x] Настройка backend (Express)
 - [x] ESLint, Prettier, EditorConfig
 - [x] Docker (docker-compose для разработки)
+- [x] Nginx reverse proxy
 - [ ] Подключение базы данных
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров
