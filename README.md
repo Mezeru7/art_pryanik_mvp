@@ -19,6 +19,8 @@ art-pryanik/
 │   └── src/
 │       ├── api/             # Роуты и контроллеры
 │       └── config/          # Конфигурация backend
+├── nginx/                   # Конфигурация Nginx
+│   └── nginx.conf           # Reverse proxy (/ → frontend, /api → backend)
 ├── .editorconfig
 ├── .prettierrc
 ├── .prettierignore
