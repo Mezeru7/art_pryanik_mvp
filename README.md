@@ -7,11 +7,30 @@ MVP веб-приложение для ООО «Арт-Пряник» — инт
 ```
 art-pryanik/
 ├── frontend/                # React + Vite (клиентская часть)
+│   ├── public/
+│   │   └── assets/
+│   │       └── icons/       # SVG-иконки (logo.svg, cart.svg, profile.svg)
 │   ├── src/
-│   │   ├── components/      # UI-компоненты (BEM + SCSS Modules)
+│   │   ├── components/
+│   │   │   ├── Header/      # Header.jsx + Header.module.scss
+│   │   │   ├── Footer/      # Footer.jsx + Footer.module.scss
+│   │   │   └── Layout/      # Layout.jsx + Layout.module.scss
 │   │   ├── pages/           # Страницы приложения
+│   │   │   ├── HomePage.jsx
+│   │   │   ├── AboutPage.jsx
+│   │   │   ├── CatalogPage.jsx
+│   │   │   ├── BlogPage.jsx
+│   │   │   ├── ContactsPage.jsx
+│   │   │   ├── ProfilePage.jsx
+│   │   │   └── NotFoundPage.jsx
+│   │   ├── styles/          # Глобальные стили
+│   │   │   ├── _variables.scss
+│   │   │   ├── _mixins.scss
+│   │   │   └── global.scss
 │   │   ├── api/             # Запросы к REST API
-│   │   └── config/          # Конфигурация frontend
+│   │   ├── config/          # Конфигурация frontend
+│   │   ├── App.jsx          # Роутинг
+│   │   └── main.jsx         # Точка входа
 │   ├── index.html
 │   ├── vite.config.js
 │   └── package.json
@@ -32,7 +51,8 @@ art-pryanik/
 
 | Слой | Технологии |
 |------|-----------|
-| Frontend | React 18, Vite 5, SCSS Modules, BEM |
+| Frontend | React 18, Vite 5, React Router 6 |
+| Стили | SCSS Modules, BEM, Flexbox, Grid, адаптив от 320px |
 | Backend | Node.js, Express, MVC |
 | База данных | MySQL, Sequelize ORM |
 | Аутентификация | JWT |
@@ -47,6 +67,18 @@ art-pryanik/
 - Авторизация
 - Профиль пользователя
 - Административная панель
+
+## Маршруты frontend
+
+| Путь | Страница |
+|------|---------|
+| `/` | Главная |
+| `/about` | О нас |
+| `/catalog` | Каталог |
+| `/blog` | Блог |
+| `/contacts` | Контакты |
+| `/profile` | Профиль |
+| `*` | 404 |
 
 ## Линтинг и форматирование
 
@@ -99,6 +131,8 @@ npm run dev
 - [x] ESLint, Prettier, EditorConfig
 - [x] Docker (docker-compose для разработки)
 - [x] Nginx reverse proxy
+- [x] Базовая маршрутизация (React Router)
+- [x] Header и Footer (адаптивные, SCSS Modules, BEM)
 - [ ] Подключение базы данных
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров

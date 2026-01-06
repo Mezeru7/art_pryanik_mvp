@@ -5,6 +5,7 @@ import CatalogPage from './pages/CatalogPage';
 import BlogPage from './pages/BlogPage';
 import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutPage';
+import ContactsPage from './pages/ContactsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="blog" element={<BlogPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="contacts" element={<ContactsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

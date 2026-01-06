@@ -1,0 +1,25 @@
+@use 'variables' as *;
+
+@mixin container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+@mixin mobile {
+  @media (max-width: #{$bp-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}

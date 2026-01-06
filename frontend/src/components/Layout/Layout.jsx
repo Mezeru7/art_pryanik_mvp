@@ -1,15 +1,16 @@
 import { Outlet } from 'react-router-dom';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import styles from './Layout.module.scss';
 
 function Layout() {
   return (
-    <div>
-      <header>
-        <nav>Арт-Пряник</nav>
-      </header>
-      <Outlet />
-      <footer>
-        <p>© 2024 Арт-Пряник</p>
-      </footer>
+    <div className={styles.layout}>
+      <Header />
+      <main className={styles.layout__main}>
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 }

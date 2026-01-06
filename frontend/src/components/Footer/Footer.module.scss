@@ -1,0 +1,107 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background-color: $color-header-bg;
+  margin-top: auto;
+
+  &__container {
+    @include container;
+    padding-top: 32px;
+    padding-bottom: 24px;
+  }
+
+  
+  &__top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-bottom: 24px;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+
+  
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__logo_icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  &__logo_text {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    color: $color-header-text;
+    white-space: nowrap;
+  }
+
+  
+  &__nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include mobile {
+      position: static;
+      transform: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mobile {
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+  }
+
+  &__link {
+    font-size: $font-size-base;
+    color: $color-header-text;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  
+  &__bottom {
+    padding-top: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__policy {
+    font-size: $font-size-sm;
+    color: $color-header-text;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
