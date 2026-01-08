@@ -9,12 +9,18 @@ art-pryanik/
 ├── frontend/                # React + Vite (клиентская часть)
 │   ├── public/
 │   │   └── assets/
-│   │       └── icons/       # SVG-иконки (logo.svg, cart.svg, profile.svg)
+│   │       ├── icons/       # SVG-иконки (logo.svg, cart.svg, profile.svg)
+│   │       └── images/      # Изображения (hero.png, карточки, отзывы, star.png)
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── Header/      # Header.jsx + Header.module.scss
-│   │   │   ├── Footer/      # Footer.jsx + Footer.module.scss
-│   │   │   └── Layout/      # Layout.jsx + Layout.module.scss
+│   │   │   ├── Header/           # Header.jsx + Header.module.scss
+│   │   │   ├── Footer/           # Footer.jsx + Footer.module.scss
+│   │   │   ├── Layout/           # Layout.jsx + Layout.module.scss
+│   │   │   ├── HeroSection/      # Hero-блок главной страницы
+│   │   │   ├── ProductsSection/  # Секция "Наши пряники" (4 карточки)
+│   │   │   ├── ProductCard/      # Карточка товара
+│   │   │   ├── ReviewsSection/   # Секция "Отзывы клиентов" (слайдер)
+│   │   │   └── ContactForm/      # Форма обратной связи "Оставьте заявку"
 │   │   ├── pages/           # Страницы приложения
 │   │   │   ├── HomePage.jsx
 │   │   │   ├── AboutPage.jsx
@@ -133,6 +139,7 @@ npm run dev
 - [x] Nginx reverse proxy
 - [x] Базовая маршрутизация (React Router)
 - [x] Header и Footer (адаптивные, SCSS Modules, BEM)
+- [x] Главная страница (Hero, карточки товаров, отзывы, форма заявки)
 - [ ] Подключение базы данных
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров

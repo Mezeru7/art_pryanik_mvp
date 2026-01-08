@@ -1,0 +1,139 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  background-color: $color-bg-home;
+  padding: 30px 0 40px;
+  overflow: hidden;
+
+  @include mobile {
+    padding: 20px 0 32px;
+  }
+
+  &__container {
+    @include container;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    min-height: 500px;
+    padding-top: 100px;
+
+    @include mobile {
+      flex-direction: column-reverse;
+      min-height: auto;
+      gap: 32px;
+      padding-top: 40px;
+    }
+  }
+
+  // Левая часть
+  &__content {
+    flex: 1;
+    max-width: 620px;
+    align-self: flex-start;
+    padding-top: 20px;
+
+    @include mobile {
+      max-width: 100%;
+      text-align: center;
+      padding-top: 0;
+    }
+  }
+
+  &__title {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: $color-text;
+    margin-bottom: 24px;
+
+    @include tablet {
+      font-size: 48px;
+    }
+
+    @include mobile {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__description {
+    font-size: $font-size-lg;
+    line-height: 1.6;
+    color: $color-text;
+    margin-bottom: 36px;
+    opacity: 0.85;
+    max-width: 420px;
+
+    @include mobile {
+      font-size: $font-size-base;
+      margin-bottom: 28px;
+      max-width: 100%;
+    }
+  }
+
+  &__cta {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: $color-primary;
+    color: #ffffff;
+    font-size: $font-size-base;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $color-primary-dark;
+    }
+
+    @include mobile {
+      padding: 12px 28px;
+    }
+  }
+
+  // Правая часть
+  &__image_wrap {
+    position: relative;
+    flex-shrink: 0;
+    width: 1040px;
+    height: 1040px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: -320px;
+    margin-top: -150px;
+
+    @include tablet {
+      width: 700px;
+      height: 700px;
+      margin-right: -200px;
+      margin-top: -100px;
+    }
+
+    @include mobile {
+      width: 320px;
+      height: 320px;
+      margin-right: -80px;
+      margin-top: 0;
+    }
+  }
+
+  &__circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $color-hero-circle;
+  }
+
+  &__image {
+    position: relative;
+    z-index: 1;
+    width: 140%;
+    height: 140%;
+    object-fit: contain;
+    transform: translate(-8%, 0);
+  }
+}

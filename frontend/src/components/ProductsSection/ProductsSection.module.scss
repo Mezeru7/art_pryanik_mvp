@@ -1,0 +1,38 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.products {
+  background-color: $color-bg-home;
+  padding: 60px 0;
+
+  @include mobile {
+    padding: 40px 0;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: 32px;
+
+    @include mobile {
+      font-size: 26px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 90px;
+
+    @include mobile {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  }
+}

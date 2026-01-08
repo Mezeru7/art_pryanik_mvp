@@ -1,0 +1,123 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.reviews {
+  background-color: $color-bg-home;
+  padding: 60px 0;
+
+  @include mobile {
+    padding: 40px 0;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: 40px;
+
+    @include mobile {
+      font-size: 26px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__slider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  &__card {
+    background-color: $color-hero-circle;
+    border-radius: 16px;
+    padding: 24px;
+    flex: 1;
+    min-height: 180px;
+
+    &--side {
+      opacity: 0.85;
+    }
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__card_header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  &__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    font-size: $font-size-base;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  &__text {
+    font-size: $font-size-sm;
+    color: $color-text;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  // Кнопки навигации
+  &__btn {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $color-primary;
+    color: #ffffff;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $color-primary-dark;
+    }
+  }
+
+  // Точки-индикаторы
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: $color-hero-circle;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s;
+
+    &--active {
+      background-color: $color-primary;
+    }
+  }
+}
