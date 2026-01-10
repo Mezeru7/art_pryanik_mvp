@@ -30,9 +30,10 @@ art-pryanik/
 │   │   │   ├── ProfilePage.jsx
 │   │   │   └── NotFoundPage.jsx
 │   │   ├── styles/          # Глобальные стили
-│   │   │   ├── _variables.scss
-│   │   │   ├── _mixins.scss
-│   │   │   └── global.scss
+│   │   │   ├── _variables.scss   # Цвета, шрифты, брейкпоинты
+│   │   │   ├── _mixins.scss      # container, mobile, tablet, desktop
+│   │   │   ├── _typography.scss  # Типографические стили
+│   │   │   └── global.scss       # Сброс + базовые стили body
 │   │   ├── api/             # Запросы к REST API
 │   │   ├── config/          # Конфигурация frontend
 │   │   ├── App.jsx          # Роутинг
@@ -140,6 +141,7 @@ npm run dev
 - [x] Базовая маршрутизация (React Router)
 - [x] Header и Footer (адаптивные, SCSS Modules, BEM)
 - [x] Главная страница (Hero, карточки товаров, отзывы, форма заявки)
+- [x] SCSS Modules + BEM (переменные, миксины, типографика)
 - [ ] Подключение базы данных
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров
