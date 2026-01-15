@@ -1,8 +1,17 @@
+import SEO from '../components/SEO/SEO';
+
 function AboutPage() {
   return (
-    <main>
-      <h1>О нас</h1>
-    </main>
+    <>
+      <SEO
+        title="О нас"
+        description="О компании Арт-Пряник — история, ценности и команда мастеров, создающих пряники с душой."
+        path="/about"
+      />
+      <main>
+        <h1>О нас</h1>
+      </main>
+    </>
   );
 }
 
