@@ -24,11 +24,14 @@ art-pryanik/
 │   │   ├── pages/           # Страницы приложения
 │   │   │   ├── HomePage.jsx
 │   │   │   ├── AboutPage.jsx
-│   │   │   ├── CatalogPage.jsx
+│   │   │   ├── CatalogPage.jsx       # Каталог с фильтром и пагинацией
+│   │   │   ├── CatalogPage.module.scss
 │   │   │   ├── BlogPage.jsx
 │   │   │   ├── ContactsPage.jsx
 │   │   │   ├── ProfilePage.jsx
 │   │   │   └── NotFoundPage.jsx
+│   │   ├── data/
+│   │   │   └── catalogProducts.js    # Mock-данные каталога
 │   │   ├── styles/          # Глобальные стили
 │   │   │   ├── _variables.scss   # Цвета, шрифты, брейкпоинты
 │   │   │   ├── _mixins.scss      # container, mobile, tablet, desktop
@@ -142,6 +145,8 @@ npm run dev
 - [x] Header и Footer (адаптивные, SCSS Modules, BEM)
 - [x] Главная страница (Hero, карточки товаров, отзывы, форма заявки)
 - [x] SCSS Modules + BEM (переменные, миксины, типографика)
+- [x] SEO мета-теги (React Helmet Async, OpenGraph)
+- [x] Страница каталога (фильтр, сетка 3×3, пагинация)
 - [ ] Подключение базы данных
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров
