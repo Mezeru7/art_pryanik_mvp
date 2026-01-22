@@ -85,6 +85,7 @@ function CatalogPage() {
                   image={product.image}
                   title={product.title}
                   price={product.price}
+                  slug={product.slug}
                 />
               ))}
             </div>

@@ -60,6 +60,11 @@
     cursor: pointer;
     width: 100%;
     transition: background-color 0.2s;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-family: $font-family-base;
+    box-sizing: border-box;
 
     &:hover {
       background-color: $color-primary-dark;

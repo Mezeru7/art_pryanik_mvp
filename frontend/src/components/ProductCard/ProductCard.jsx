@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 
-function ProductCard({ image, title, price }) {
+function ProductCard({ image, title, price, slug }) {
   return (
     <article className={styles.card}>
       <div className={styles.card__image_wrap}>
@@ -13,9 +14,15 @@ function ProductCard({ image, title, price }) {
       <div className={styles.card__body}>
         <h3 className={styles.card__title}>{title}</h3>
         <p className={styles.card__price}>{price}</p>
-        <button className={styles.card__btn} type="button">
-          Подробнее
-        </button>
+        {slug ? (
+          <Link to={`/product/${slug}`} className={styles.card__btn}>
+            Подробнее
+          </Link>
+        ) : (
+          <button className={styles.card__btn} type="button">
+            Подробнее
+          </button>
+        )}
       </div>
     </article>
   );

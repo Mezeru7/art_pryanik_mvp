@@ -26,6 +26,8 @@ art-pryanik/
 │   │   │   ├── AboutPage.jsx
 │   │   │   ├── CatalogPage.jsx       # Каталог с фильтром и пагинацией
 │   │   │   ├── CatalogPage.module.scss
+│   │   │   ├── ProductPage.jsx       # Страница отдельного товара
+│   │   │   ├── ProductPage.module.scss
 │   │   │   ├── BlogPage.jsx
 │   │   │   ├── ContactsPage.jsx
 │   │   │   ├── ProfilePage.jsx
@@ -88,6 +90,7 @@ art-pryanik/
 | `/blog` | Блог |
 | `/contacts` | Контакты |
 | `/profile` | Профиль |
+| `/product/:slug` | Страница товара |
 | `*` | 404 |
 
 ## Линтинг и форматирование
@@ -147,6 +150,7 @@ npm run dev
 - [x] SCSS Modules + BEM (переменные, миксины, типографика)
 - [x] SEO мета-теги (React Helmet Async, OpenGraph)
 - [x] Страница каталога (фильтр, сетка 3×3, пагинация)
+- [x] Страница товара (фото, описание, счётчик, кнопка в корзину)
 - [ ] Подключение базы данных
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров
