@@ -9,6 +9,7 @@ function ProductCard({ image, title, price, slug }) {
           src={image}
           alt={title}
           className={styles.card__image}
+          loading="lazy"
         />
       </div>
       <div className={styles.card__body}>

@@ -36,6 +36,7 @@ function ProductPage() {
                   src={product.image}
                   alt={product.title}
                   className={styles.product__image}
+                  loading="eager"
                 />
               </div>
             </div>

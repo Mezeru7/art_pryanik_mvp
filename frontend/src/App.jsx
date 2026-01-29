@@ -1,29 +1,33 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
-import HomePage from './pages/HomePage';
-import CatalogPage from './pages/CatalogPage';
-import ProductPage from './pages/ProductPage';
-import BlogPage from './pages/BlogPage';
-import ProfilePage from './pages/ProfilePage';
-import AboutPage from './pages/AboutPage';
-import ContactsPage from './pages/ContactsPage';
-import NotFoundPage from './pages/NotFoundPage';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const CatalogPage = lazy(() => import('./pages/CatalogPage'));
+const ProductPage = lazy(() => import('./pages/ProductPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactsPage = lazy(() => import('./pages/ContactsPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="catalog" element={<CatalogPage />} />
-          <Route path="product/:slug" element={<ProductPage />} />
-          <Route path="blog" element={<BlogPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="contacts" element={<ContactsPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="catalog" element={<CatalogPage />} />
+            <Route path="product/:slug" element={<ProductPage />} />
+            <Route path="blog" element={<BlogPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="contacts" element={<ContactsPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
