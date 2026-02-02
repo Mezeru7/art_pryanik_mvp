@@ -47,9 +47,14 @@ art-pryanik/
 │   ├── vite.config.js
 │   └── package.json
 ├── backend/                 # Node.js + Express (серверная часть, MVC)
-│   └── src/
-│       ├── api/             # Роуты и контроллеры
-│       └── config/          # Конфигурация backend
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── database.js      # Конфигурация Sequelize + MySQL
+│   │   ├── api/             # Роуты и контроллеры (заглушки)
+│   │   ├── app.js           # Express-приложение
+│   │   └── server.js        # Запуск сервера
+│   ├── .env.example         # Шаблон переменных окружения
+│   └── package.json
 ├── nginx/                   # Конфигурация Nginx
 │   └── nginx.conf           # Reverse proxy (/ → frontend, /api → backend)
 ├── .editorconfig
@@ -63,7 +68,7 @@ art-pryanik/
 
 | Слой | Технологии |
 |------|-----------|
-| Frontend | React 18, Vite 5, React Router 6 |
+| Frontend | React 18, Vite 5, React Router 6, React Helmet Async |
 | Стили | SCSS Modules, BEM, Flexbox, Grid, адаптив от 320px |
 | Backend | Node.js, Express, MVC |
 | База данных | MySQL, Sequelize ORM |
@@ -152,7 +157,8 @@ npm run dev
 - [x] Страница каталога (фильтр, сетка 3×3, пагинация)
 - [x] Страница товара (фото, описание, счётчик, кнопка в корзину)
 - [x] Оптимизация (code splitting, lazy loading изображений)
-- [ ] Подключение базы данных
+- [x] Подключение базы данных (MySQL + Sequelize)
+- [ ] Модели данных (Sequelize)
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров
 - [ ] Корзина
