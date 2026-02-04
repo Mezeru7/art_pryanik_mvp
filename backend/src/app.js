@@ -1,9 +1,8 @@
 const express = require('express');
-const sequelize = require('./config/database');
+const { sequelize } = require('./models');
 
 const app = express();
 
-// Проверка подключения к БД
 sequelize
   .authenticate()
   .then(() => {
@@ -13,7 +12,6 @@ sequelize
     console.error('Ошибка подключения к базе данных:', err.message);
   });
 
-// Health check
 app.get('/', (req, res) => {
   res.json({ status: 'ok', message: 'Арт-Пряник API работает' });
 });

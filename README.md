@@ -50,6 +50,18 @@ art-pryanik/
 │   ├── src/
 │   │   ├── config/
 │   │   │   └── database.js      # Конфигурация Sequelize + MySQL
+│   │   ├── models/              # Sequelize-модели
+│   │   │   ├── index.js         # Инициализация + все ассоциации
+│   │   │   ├── User.js
+│   │   │   ├── Category.js
+│   │   │   ├── Product.js
+│   │   │   ├── ProductImage.js
+│   │   │   ├── Order.js
+│   │   │   ├── OrderItem.js
+│   │   │   ├── BlogPost.js
+│   │   │   ├── Request.js
+│   │   │   ├── RefreshToken.js
+│   │   │   └── PasswordReset.js
 │   │   ├── api/             # Роуты и контроллеры (заглушки)
 │   │   ├── app.js           # Express-приложение
 │   │   └── server.js        # Запуск сервера
@@ -158,7 +170,8 @@ npm run dev
 - [x] Страница товара (фото, описание, счётчик, кнопка в корзину)
 - [x] Оптимизация (code splitting, lazy loading изображений)
 - [x] Подключение базы данных (MySQL + Sequelize)
-- [ ] Модели данных (Sequelize)
+- [x] Модели данных (User, Category, Product, Order, BlogPost и др. + ассоциации)
+- [ ] Аутентификация (JWT)
 - [ ] Аутентификация (JWT)
 - [ ] Каталог товаров
 - [ ] Корзина
