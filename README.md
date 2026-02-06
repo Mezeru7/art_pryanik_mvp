@@ -62,7 +62,26 @@ art-pryanik/
 │   │   │   ├── Request.js
 │   │   │   ├── RefreshToken.js
 │   │   │   └── PasswordReset.js
-│   │   ├── api/             # Роуты и контроллеры (заглушки)
+│   │   ├── api/
+│   │   │   └── routes/          # Express-роуты
+│   │   │       ├── index.js
+│   │   │       ├── productRoutes.js
+│   │   │       ├── categoryRoutes.js
+│   │   │       ├── blogRoutes.js
+│   │   │       ├── orderRoutes.js
+│   │   │       └── requestRoutes.js
+│   │   ├── controllers/         # MVC-контроллеры
+│   │   │   ├── productController.js
+│   │   │   ├── categoryController.js
+│   │   │   ├── blogController.js
+│   │   │   ├── orderController.js
+│   │   │   └── requestController.js
+│   │   ├── services/            # Бизнес-логика
+│   │   │   ├── productService.js
+│   │   │   ├── categoryService.js
+│   │   │   ├── blogService.js
+│   │   │   ├── orderService.js
+│   │   │   └── requestService.js
 │   │   ├── app.js           # Express-приложение
 │   │   └── server.js        # Запуск сервера
 │   ├── .env.example         # Шаблон переменных окружения
@@ -109,6 +128,21 @@ art-pryanik/
 | `/profile` | Профиль |
 | `/product/:slug` | Страница товара |
 | `*` | 404 |
+
+## API эндпоинты
+
+| Метод | Путь | Описание |
+|-------|------|---------|
+| GET | `/api/products` | Список товаров |
+| GET | `/api/products/:id` | Товар по ID |
+| GET | `/api/categories` | Список категорий |
+| GET | `/api/categories/:id` | Категория по ID |
+| GET | `/api/blog` | Список статей блога |
+| GET | `/api/blog/:id` | Статья по ID |
+| GET | `/api/orders` | Список заказов |
+| GET | `/api/orders/:id` | Заказ по ID |
+| POST | `/api/requests` | Создать заявку |
+| GET | `/api/requests` | Список заявок |
 
 ## Линтинг и форматирование
 
@@ -171,9 +205,8 @@ npm run dev
 - [x] Оптимизация (code splitting, lazy loading изображений)
 - [x] Подключение базы данных (MySQL + Sequelize)
 - [x] Модели данных (User, Category, Product, Order, BlogPost и др. + ассоциации)
+- [x] REST API (MVC: контроллеры, сервисы, роуты)
 - [ ] Аутентификация (JWT)
-- [ ] Аутентификация (JWT)
-- [ ] Каталог товаров
 - [ ] Корзина
 - [ ] Блог
 - [ ] Административная панель
