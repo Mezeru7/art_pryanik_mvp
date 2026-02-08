@@ -133,8 +133,11 @@ art-pryanik/
 
 | Метод | Путь | Описание |
 |-------|------|---------|
-| GET | `/api/products` | Список товаров |
+| GET | `/api/products` | Список товаров (фильтр: `?category_id=`) |
 | GET | `/api/products/:id` | Товар по ID |
+| POST | `/api/products` | Создать товар |
+| PUT | `/api/products/:id` | Обновить товар |
+| DELETE | `/api/products/:id` | Удалить товар |
 | GET | `/api/categories` | Список категорий |
 | GET | `/api/categories/:id` | Категория по ID |
 | GET | `/api/blog` | Список статей блога |
