@@ -140,6 +140,10 @@ art-pryanik/
 | DELETE | `/api/products/:id` | Удалить товар |
 | GET | `/api/categories` | Список категорий |
 | GET | `/api/categories/:id` | Категория по ID |
+| GET | `/api/categories/:id/products` | Товары категории |
+| POST | `/api/categories` | Создать категорию |
+| PUT | `/api/categories/:id` | Обновить категорию |
+| DELETE | `/api/categories/:id` | Удалить категорию |
 | GET | `/api/blog` | Список статей блога |
 | GET | `/api/blog/:id` | Статья по ID |
 | GET | `/api/orders` | Список заказов |
