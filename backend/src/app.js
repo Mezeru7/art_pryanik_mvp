@@ -1,6 +1,7 @@
 const express = require('express');
 const { sequelize } = require('./models');
 const apiRoutes = require('./api/routes');
+const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
 
@@ -16,5 +17,7 @@ app.use('/api', apiRoutes);
 app.get('/', (req, res) => {
   res.json({ status: 'ok', message: 'Арт-Пряник API работает' });
 });
+
+app.use(errorHandler);
 
 module.exports = app;

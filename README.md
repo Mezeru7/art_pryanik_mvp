@@ -76,6 +76,13 @@ art-pryanik/
 │   │   │   ├── blogController.js
 │   │   │   ├── orderController.js
 │   │   │   └── requestController.js
+│   │   ├── middleware/          # Middleware
+│   │   │   ├── errorHandler.js  # Централизованная обработка ошибок
+│   │   │   ├── validate.js      # Фабрика валидаторов
+│   │   │   └── validators/
+│   │   │       ├── productValidator.js
+│   │   │       ├── categoryValidator.js
+│   │   │       └── requestValidator.js
 │   │   ├── services/            # Бизнес-логика
 │   │   │   ├── productService.js
 │   │   │   ├── categoryService.js
@@ -213,6 +220,7 @@ npm run dev
 - [x] Подключение базы данных (MySQL + Sequelize)
 - [x] Модели данных (User, Category, Product, Order, BlogPost и др. + ассоциации)
 - [x] REST API (MVC: контроллеры, сервисы, роуты)
+- [x] Middleware валидации (validate, errorHandler)
 - [ ] Аутентификация (JWT)
 - [ ] Корзина
 - [ ] Блог

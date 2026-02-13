@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const productController = require('../../controllers/productController');
+const { createProduct, updateProduct } = require('../../middleware/validators/productValidator');
 
-router.get('/', productController.getAll);       // GET  /api/products
-router.get('/:id', productController.getById);   // GET  /api/products/:id
-router.post('/', productController.create);      // POST /api/products
-router.put('/:id', productController.update);    // PUT  /api/products/:id
-router.delete('/:id', productController.remove); // DELETE /api/products/:id
+router.get('/', productController.getAll);
+router.get('/:id', productController.getById);
+router.post('/', createProduct, productController.create);
+router.put('/:id', updateProduct, productController.update);
+router.delete('/:id', productController.remove);
 
 module.exports = router;
