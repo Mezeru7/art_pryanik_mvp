@@ -2,9 +2,11 @@ const express = require('express');
 const { sequelize } = require('./models');
 const apiRoutes = require('./api/routes');
 const errorHandler = require('./middleware/errorHandler');
+const corsMiddleware = require('./middleware/cors');
 
 const app = express();
 
+app.use(corsMiddleware);
 app.use(express.json());
 
 sequelize

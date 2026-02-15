@@ -221,6 +221,7 @@ npm run dev
 - [x] Модели данных (User, Category, Product, Order, BlogPost и др. + ассоциации)
 - [x] REST API (MVC: контроллеры, сервисы, роуты)
 - [x] Middleware валидации (validate, errorHandler)
+- [x] CORS + переменные окружения (backend/.env, frontend/.env)
 - [ ] Аутентификация (JWT)
 - [ ] Корзина
 - [ ] Блог
