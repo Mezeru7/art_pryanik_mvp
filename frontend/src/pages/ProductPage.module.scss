@@ -186,3 +186,36 @@
     max-width: 680px;
   }
 }
+
+.product__toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background-color: $color-primary;
+  color: #ffffff;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: $font-size-base;
+  font-weight: 500;
+  z-index: 1000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease;
+
+  @include mobile {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    text-align: center;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

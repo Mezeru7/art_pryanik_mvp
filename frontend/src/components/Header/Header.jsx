@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { useCartContext } from '../../context/CartContext';
 import styles from './Header.module.scss';
 
 const NAV_LINKS = [
@@ -12,6 +13,7 @@ const NAV_LINKS = [
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { count } = useCartContext();
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
@@ -56,7 +58,12 @@ function Header() {
         {/* Иконки справа */}
         <div className={styles.header__actions}>
           <Link to="/cart" className={styles.header__action_btn} aria-label="Корзина">
-            <img src="/assets/icons/cart.svg" alt="Корзина" className={styles.header__action_icon} />
+            <span className={styles.header__cart_wrap}>
+              <img src="/assets/icons/cart.svg" alt="Корзина" className={styles.header__action_icon} />
+              {count > 0 && (
+                <span className={styles.header__cart_badge}>{count}</span>
+              )}
+            </span>
           </Link>
           <Link to="/profile" className={styles.header__action_btn} aria-label="Профиль">
             <img src="/assets/icons/profile.svg" alt="Профиль" className={styles.header__action_icon} />

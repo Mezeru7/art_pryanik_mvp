@@ -222,7 +222,7 @@ npm run dev
 - [x] REST API (MVC: контроллеры, сервисы, роуты)
 - [x] Middleware валидации (validate, errorHandler)
 - [x] CORS + переменные окружения (backend/.env, frontend/.env)
+- [x] Корзина (localStorage, добавление/удаление/счётчик)
 - [ ] Аутентификация (JWT)
-- [ ] Корзина
 - [ ] Блог
 - [ ] Административная панель

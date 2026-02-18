@@ -2,20 +2,36 @@ import { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import SEO from '../components/SEO/SEO';
 import { CATALOG_PRODUCTS } from '../data/catalogProducts';
+import { useCartContext } from '../context/CartContext';
 import styles from './ProductPage.module.scss';
 
 function ProductPage() {
   const { slug } = useParams();
   const product = CATALOG_PRODUCTS.find((p) => p.slug === slug);
   const [quantity, setQuantity] = useState(1);
+  const [toast, setToast] = useState(false);
+  const { addItem } = useCartContext();
 
   if (!product) return <Navigate to="/catalog" replace />;
 
   const dec = () => setQuantity((q) => Math.max(1, q - 1));
   const inc = () => setQuantity((q) => q + 1);
 
+  const handleAddToCart = () => {
+    for (let i = 0; i < quantity; i++) {
+      addItem(product);
+    }
+    setToast(true);
+    setTimeout(() => setToast(false), 2500);
+  };
+
   return (
     <>
+      {toast && (
+        <div className={styles.product__toast}>
+          ✓ Товар добавлен в корзину
+        </div>
+      )}
       <SEO
         title={product.title}
         description={product.description.split('\n')[0]}
@@ -67,8 +83,8 @@ function ProductPage() {
                 </button>
               </div>
 
-              {/* Кнопка в корзину (заглушка) */}
-              <button className={styles.product__cart_btn} type="button">
+              {/* Кнопка в корзину */}
+              <button className={styles.product__cart_btn} type="button" onClick={handleAddToCart}>
                 В корзину
               </button>
 

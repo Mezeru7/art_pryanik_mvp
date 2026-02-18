@@ -142,7 +142,32 @@
   &__action_icon {
     width: 24px;
     height: 24px;
-    filter: brightness(0) invert(1); // белый цвет иконок
+    filter: brightness(0) invert(1);
+  }
+
+  &__cart_wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__cart_badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 18px;
+    height: 18px;
+    background-color: #ffffff;
+    color: $color-primary;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+    line-height: 1;
   }
 
   
