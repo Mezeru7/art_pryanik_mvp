@@ -23,15 +23,23 @@ art-pryanik/
 │   │   │   └── ContactForm/      # Форма обратной связи "Оставьте заявку"
 │   │   ├── pages/           # Страницы приложения
 │   │   │   ├── HomePage.jsx
-│   │   │   ├── AboutPage.jsx
-│   │   │   ├── CatalogPage.jsx       # Каталог с фильтром и пагинацией
+│   │   │   ├── AboutPage.jsx             # Страница "О нас"
+│   │   │   ├── AboutPage.module.scss
+│   │   │   ├── CatalogPage.jsx           # Каталог с фильтром и пагинацией
 │   │   │   ├── CatalogPage.module.scss
-│   │   │   ├── ProductPage.jsx       # Страница отдельного товара
+│   │   │   ├── ProductPage.jsx           # Страница отдельного товара
 │   │   │   ├── ProductPage.module.scss
+│   │   │   ├── CartPage.jsx              # Корзина
+│   │   │   ├── CartPage.module.scss
+│   │   │   ├── ContactsPage.jsx          # Контакты
+│   │   │   ├── ContactsPage.module.scss
 │   │   │   ├── BlogPage.jsx
-│   │   │   ├── ContactsPage.jsx
 │   │   │   ├── ProfilePage.jsx
 │   │   │   └── NotFoundPage.jsx
+│   │   ├── context/
+│   │   │   └── CartContext.jsx           # Контекст корзины
+│   │   ├── hooks/
+│   │   │   └── useCart.js                # Хук корзины (localStorage)
 │   │   ├── data/
 │   │   │   └── catalogProducts.js    # Mock-данные каталога
 │   │   ├── styles/          # Глобальные стили
@@ -133,6 +141,7 @@ art-pryanik/
 | `/blog` | Блог |
 | `/contacts` | Контакты |
 | `/profile` | Профиль |
+| `/cart` | Корзина |
 | `/product/:slug` | Страница товара |
 | `*` | 404 |
 
@@ -222,7 +231,9 @@ npm run dev
 - [x] REST API (MVC: контроллеры, сервисы, роуты)
 - [x] Middleware валидации (validate, errorHandler)
 - [x] CORS + переменные окружения (backend/.env, frontend/.env)
-- [x] Корзина (localStorage, добавление/удаление/счётчик)
+- [x] Корзина (localStorage, добавление/удаление/счётчик, минимальный заказ 3 шт.)
+- [x] Страница "О нас" (верстка по фигме)
+- [x] Страница "Контакты" (верстка по фигме)
 - [ ] Аутентификация (JWT)
 - [ ] Блог
 - [ ] Административная панель
