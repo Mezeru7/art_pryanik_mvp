@@ -164,6 +164,8 @@ art-pryanik/
 | GET | `/api/blog/:id` | Статья по ID |
 | GET | `/api/orders` | Список заказов |
 | GET | `/api/orders/:id` | Заказ по ID |
+| POST | `/api/orders` | Создать заказ (с позициями) |
+| PATCH | `/api/orders/:id/status` | Обновить статус заказа |
 | POST | `/api/requests` | Создать заявку |
 | GET | `/api/requests` | Список заявок |
 
@@ -229,6 +231,7 @@ npm run dev
 - [x] Подключение базы данных (MySQL + Sequelize)
 - [x] Модели данных (User, Category, Product, Order, BlogPost и др. + ассоциации)
 - [x] REST API (MVC: контроллеры, сервисы, роуты)
+- [x] API заказов (создание, список, статус, минимум 3 шт.)
 - [x] Middleware валидации (validate, errorHandler)
 - [x] CORS + переменные окружения (backend/.env, frontend/.env)
 - [x] Корзина (localStorage, добавление/удаление/счётчик, минимальный заказ 3 шт.)
