@@ -142,6 +142,7 @@ art-pryanik/
 | `/contacts` | Контакты |
 | `/profile` | Профиль |
 | `/cart` | Корзина |
+| `/orders` | История заказов |
 | `/product/:slug` | Страница товара |
 | `*` | 404 |
 
@@ -232,6 +233,7 @@ npm run dev
 - [x] Модели данных (User, Category, Product, Order, BlogPost и др. + ассоциации)
 - [x] REST API (MVC: контроллеры, сервисы, роуты)
 - [x] API заказов (создание, список, статус, минимум 3 шт.)
+- [x] Страница истории заказов (список, статусы)
 - [x] Middleware валидации (validate, errorHandler)
 - [x] CORS + переменные окружения (backend/.env, frontend/.env)
 - [x] Корзина (localStorage, добавление/удаление/счётчик, минимальный заказ 3 шт.)

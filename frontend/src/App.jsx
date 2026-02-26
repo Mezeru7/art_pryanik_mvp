@@ -7,6 +7,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const CatalogPage = lazy(() => import('./pages/CatalogPage'));
 const ProductPage = lazy(() => import('./pages/ProductPage'));
 const CartPage = lazy(() => import('./pages/CartPage'));
+const OrdersPage = lazy(() => import('./pages/OrdersPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -24,6 +25,7 @@ function App() {
               <Route path="catalog" element={<CatalogPage />} />
               <Route path="product/:slug" element={<ProductPage />} />
               <Route path="cart" element={<CartPage />} />
+            <Route path="orders" element={<OrdersPage />} />
               <Route path="blog" element={<BlogPage />} />
               <Route path="profile" element={<ProfilePage />} />
               <Route path="about" element={<AboutPage />} />
