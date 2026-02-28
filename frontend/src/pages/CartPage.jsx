@@ -2,11 +2,15 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO/SEO';
 import { useCartContext } from '../context/CartContext';
+import { useCartSync } from '../hooks/useCartSync';
 import styles from './CartPage.module.scss';
 
 function CartPage() {
   const { items, removeItem, updateQuantity, total, count } = useCartContext();
   const [comment, setComment] = useState('');
+
+  // Проверяем актуальность товаров при открытии корзины
+  useCartSync(items, removeItem);
 
   const MIN_ORDER = 3;
   const canOrder = count >= MIN_ORDER;
