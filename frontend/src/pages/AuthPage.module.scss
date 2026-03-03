@@ -1,0 +1,139 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.auth {
+  background-color: $color-bg-home;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+
+  @include mobile {
+    padding: 32px 16px;
+    align-items: flex-start;
+  }
+}
+
+.auth__card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+
+  @include mobile {
+    padding: 32px 24px;
+  }
+}
+
+.auth__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: $color-text;
+  text-align: center;
+  margin-bottom: 32px;
+  line-height: 1.2;
+
+  @include mobile {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+}
+
+.auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth__input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #e0d6cc;
+  border-radius: 30px;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  color: $color-text;
+  background-color: #f5f0eb;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
+
+  &::placeholder {
+    color: #a09890;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+    background-color: #ffffff;
+  }
+
+  &--error {
+    border-color: #e53935;
+  }
+}
+
+.auth__error {
+  font-size: $font-size-sm;
+  color: #e53935;
+  margin-top: -4px;
+  padding-left: 18px;
+}
+
+.auth__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.auth__link {
+  font-size: $font-size-base;
+  color: $color-primary;
+  text-decoration: none;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.auth__policy {
+  font-size: $font-size-sm;
+  color: $color-text;
+  opacity: 0.6;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.auth__policy_link {
+  color: $color-primary;
+  text-decoration: underline;
+  text-decoration-color: $color-primary;
+}
+
+.auth__btn {
+  width: 100%;
+  padding: 14px 0;
+  background-color: $color-primary;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  font-size: $font-size-base;
+  font-weight: 600;
+  font-family: $font-family-base;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}

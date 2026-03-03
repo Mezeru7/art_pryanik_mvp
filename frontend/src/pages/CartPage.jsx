@@ -9,7 +9,6 @@ function CartPage() {
   const { items, removeItem, updateQuantity, total, count } = useCartContext();
   const [comment, setComment] = useState('');
 
-  // Проверяем актуальность товаров при открытии корзины
   useCartSync(items, removeItem);
 
   const MIN_ORDER = 3;

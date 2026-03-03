@@ -8,6 +8,8 @@ const CatalogPage = lazy(() => import('./pages/CatalogPage'));
 const ProductPage = lazy(() => import('./pages/ProductPage'));
 const CartPage = lazy(() => import('./pages/CartPage'));
 const OrdersPage = lazy(() => import('./pages/OrdersPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -26,6 +28,8 @@ function App() {
               <Route path="product/:slug" element={<ProductPage />} />
               <Route path="cart" element={<CartPage />} />
             <Route path="orders" element={<OrdersPage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
               <Route path="blog" element={<BlogPage />} />
               <Route path="profile" element={<ProfilePage />} />
               <Route path="about" element={<AboutPage />} />
