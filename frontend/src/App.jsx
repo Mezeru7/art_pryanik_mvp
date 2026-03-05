@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const CatalogPage = lazy(() => import('./pages/CatalogPage'));
@@ -18,7 +19,8 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
   return (
-    <CartProvider>
+    <AuthProvider>
+      <CartProvider>
       <BrowserRouter>
         <Suspense fallback={null}>
           <Routes>
@@ -40,6 +42,7 @@ function App() {
         </Suspense>
       </BrowserRouter>
     </CartProvider>
+    </AuthProvider>
   );
 }
 
