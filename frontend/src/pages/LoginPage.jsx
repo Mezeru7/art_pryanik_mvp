@@ -1,11 +1,16 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SEO from '../components/SEO/SEO';
+import { useAuth } from '../context/AuthContext';
 import styles from './AuthPage.module.scss';
 
 function LoginPage() {
   const [form, setForm] = useState({ login: '', password: '' });
   const [errors, setErrors] = useState({});
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const validate = () => {
     const errs = {};

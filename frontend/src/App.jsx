@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import GuestRoute from './components/GuestRoute/GuestRoute';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const CatalogPage = lazy(() => import('./pages/CatalogPage'));
@@ -21,27 +23,41 @@ function App() {
   return (
     <AuthProvider>
       <CartProvider>
-      <BrowserRouter>
-        <Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<HomePage />} />
-              <Route path="catalog" element={<CatalogPage />} />
-              <Route path="product/:slug" element={<ProductPage />} />
-              <Route path="cart" element={<CartPage />} />
-            <Route path="orders" element={<OrdersPage />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="register" element={<RegisterPage />} />
-              <Route path="blog" element={<BlogPage />} />
-              <Route path="profile" element={<ProfilePage />} />
-              <Route path="about" element={<AboutPage />} />
-              <Route path="contacts" element={<ContactsPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </CartProvider>
+        <BrowserRouter>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                {/* Публичные маршруты */}
+                <Route index element={<HomePage />} />
+                <Route path="catalog" element={<CatalogPage />} />
+                <Route path="product/:slug" element={<ProductPage />} />
+                <Route path="blog" element={<BlogPage />} />
+                <Route path="about" element={<AboutPage />} />
+                <Route path="contacts" element={<ContactsPage />} />
+
+                {/* Только для гостей */}
+                <Route path="login" element={
+                  <GuestRoute><LoginPage /></GuestRoute>
+                } />
+                <Route path="register" element={
+                  <GuestRoute><RegisterPage /></GuestRoute>
+                } />
+
+                {/* Только для авторизованных */}
+                <Route path="profile" element={
+                  <PrivateRoute><ProfilePage /></PrivateRoute>
+                } />
+                <Route path="orders" element={
+                  <PrivateRoute><OrdersPage /></PrivateRoute>
+                } />
+                <Route path="cart" element={<CartPage />} />
+
+                <Route path="*" element={<NotFoundPage />} />
+              </Route>
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </CartProvider>
     </AuthProvider>
   );
 }
