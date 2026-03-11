@@ -247,5 +247,6 @@ npm run dev
 - [x] Страницы входа и регистрации (верстка по фигме, валидация форм)
 - [x] Аутентификация (JWT: register, login, /me, middleware auth)
 - [x] Защищённые маршруты (PrivateRoute, GuestRoute, redirect)
+- [x] Разграничение ролей (requireRole middleware, AdminRoute)
 - [ ] Блог
 - [ ] Административная панель

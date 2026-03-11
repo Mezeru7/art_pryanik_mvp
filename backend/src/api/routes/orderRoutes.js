@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const orderController = require('../../controllers/orderController');
+const auth = require('../../middleware/auth');
+const requireRole = require('../../middleware/requireRole');
 
-router.get('/', orderController.getAll);                    // GET    /api/orders
-router.get('/:id', orderController.getById);                // GET    /api/orders/:id
-router.post('/', orderController.create);                   // POST   /api/orders
-router.patch('/:id/status', orderController.updateStatus);  // PATCH  /api/orders/:id/status
+router.get('/', auth, requireRole('admin'), orderController.getAll);   // только admin
+router.get('/:id', auth, orderController.getById);                     // авторизованный
+router.post('/', orderController.create);                              // публичный (гостевые заказы)
+router.patch('/:id/status', auth, requireRole('admin'), orderController.updateStatus); // только admin
 
 module.exports = router;
