@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../../controllers/authController');
+const passwordResetController = require('../../controllers/passwordResetController');
 const auth = require('../../middleware/auth');
 
-router.post('/register', authController.register); // POST /api/auth/register
-router.post('/login', authController.login);       // POST /api/auth/login
-router.get('/me', auth, authController.getMe);     // GET  /api/auth/me (защищённый)
+router.post('/register', authController.register);
+router.post('/login', authController.login);
+router.get('/me', auth, authController.getMe);
+router.post('/forgot-password', passwordResetController.requestReset);
+router.post('/reset-password', passwordResetController.resetPassword);
 
 module.exports = router;

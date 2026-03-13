@@ -14,6 +14,8 @@ const CartPage = lazy(() => import('./pages/CartPage'));
 const OrdersPage = lazy(() => import('./pages/OrdersPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
+const ForgotPasswordPage = lazy(() => import('./pages/ForgotPasswordPage'));
+const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -42,6 +44,12 @@ function App() {
                 } />
                 <Route path="register" element={
                   <GuestRoute><RegisterPage /></GuestRoute>
+                } />
+                <Route path="forgot-password" element={
+                  <GuestRoute><ForgotPasswordPage /></GuestRoute>
+                } />
+                <Route path="reset-password" element={
+                  <GuestRoute><ResetPasswordPage /></GuestRoute>
                 } />
 
                 {/* Только для авторизованных */}

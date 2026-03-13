@@ -29,9 +29,11 @@ art-pryanik/
 │   │   │   ├── CatalogPage.module.scss
 │   │   │   ├── ProductPage.jsx           # Страница отдельного товара
 │   │   │   ├── ProductPage.module.scss
-│   │   │   ├── CartPage.jsx              # Корзина
-│   │   │   ├── CartPage.module.scss
-│   │   │   ├── ContactsPage.jsx          # Контакты
+│   │   │   ├── LoginPage.jsx             # Вход
+│   │   │   ├── RegisterPage.jsx          # Регистрация
+│   │   │   ├── ForgotPasswordPage.jsx    # Забыли пароль
+│   │   │   ├── ResetPasswordPage.jsx     # Сброс пароля по токену
+│   │   │   ├── OrdersPage.jsx            # История заказов
 │   │   │   ├── ContactsPage.module.scss
 │   │   │   ├── BlogPage.jsx
 │   │   │   ├── ProfilePage.jsx
@@ -146,6 +148,8 @@ art-pryanik/
 | `/product/:slug` | Страница товара |
 | `/login` | Вход |
 | `/register` | Регистрация |
+| `/forgot-password` | Забыли пароль |
+| `/reset-password` | Сброс пароля |
 | `*` | 404 |
 
 ## API эндпоинты
@@ -154,7 +158,8 @@ art-pryanik/
 |-------|------|---------|
 | POST | `/api/auth/register` | Регистрация |
 | POST | `/api/auth/login` | Вход, получение JWT |
-| GET | `/api/auth/me` | Текущий пользователь (JWT) |
+| POST | `/api/auth/forgot-password` | Запрос сброса пароля (mock email) |
+| POST | `/api/auth/reset-password` | Сброс пароля по токену |
 | GET | `/api/products/:id` | Товар по ID |
 | POST | `/api/products` | Создать товар |
 | PUT | `/api/products/:id` | Обновить товар |
@@ -248,5 +253,6 @@ npm run dev
 - [x] Аутентификация (JWT: register, login, /me, middleware auth)
 - [x] Защищённые маршруты (PrivateRoute, GuestRoute, redirect)
 - [x] Разграничение ролей (requireRole middleware, AdminRoute)
+- [x] Восстановление пароля (reset token, mock email, формы)
 - [ ] Блог
 - [ ] Административная панель
