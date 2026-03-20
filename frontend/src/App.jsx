@@ -53,9 +53,7 @@ function App() {
                 } />
 
                 {/* Только для авторизованных */}
-                <Route path="profile" element={
-                  <PrivateRoute><ProfilePage /></PrivateRoute>
-                } />
+                <Route path="profile" element={<ProfilePage />} />
                 <Route path="orders" element={
                   <PrivateRoute><OrdersPage /></PrivateRoute>
                 } />

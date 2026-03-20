@@ -33,6 +33,8 @@ art-pryanik/
 │   │   │   ├── RegisterPage.jsx          # Регистрация
 │   │   │   ├── ForgotPasswordPage.jsx    # Забыли пароль
 │   │   │   ├── ResetPasswordPage.jsx     # Сброс пароля по токену
+│   │   │   ├── ProfilePage.jsx           # Личный кабинет
+│   │   │   ├── ProfilePage.module.scss
 │   │   │   ├── OrdersPage.jsx            # История заказов
 │   │   │   ├── ContactsPage.module.scss
 │   │   │   ├── BlogPage.jsx
@@ -254,5 +256,6 @@ npm run dev
 - [x] Защищённые маршруты (PrivateRoute, GuestRoute, redirect)
 - [x] Разграничение ролей (requireRole middleware, AdminRoute)
 - [x] Восстановление пароля (reset token, mock email, формы)
+- [x] Страница профиля пользователя (личный кабинет, навигация, аватар)
 - [ ] Блог
 - [ ] Административная панель
