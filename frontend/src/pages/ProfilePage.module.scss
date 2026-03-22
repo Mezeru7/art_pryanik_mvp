@@ -1,7 +1,6 @@
 @use '../styles/variables' as *;
 @use '../styles/mixins' as *;
 
-// Hero
 .profile__hero {
   background-color: $color-bg-home;
   padding: 60px 0 40px;
@@ -29,7 +28,6 @@
   opacity: 0.75;
 }
 
-// Основной блок
 .profile__main {
   background-color: $color-bg-home;
   padding: 40px 0 80px;
@@ -47,7 +45,6 @@
   }
 }
 
-// Левая навигация
 .profile__nav {
   flex-shrink: 0;
   width: 200px;
@@ -85,7 +82,6 @@
   }
 }
 
-// Разделитель
 .profile__divider {
   width: 1px;
   background-color: #d0c8c0;
@@ -98,7 +94,6 @@
   }
 }
 
-// Правая часть
 .profile__content {
   flex: 1;
   min-width: 0;
@@ -151,4 +146,168 @@
   font-size: $font-size-base;
   color: $color-text;
   opacity: 0.6;
+}
+
+.settings__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 480px;
+}
+
+.settings__title {
+  font-size: 24px;
+  font-weight: 400;
+  color: $color-text;
+  margin-bottom: 8px;
+}
+
+.settings__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.settings__label {
+  font-size: $font-size-sm;
+  color: $color-text;
+  opacity: 0.65;
+  font-weight: 500;
+}
+
+.settings__input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d0c8c0;
+  border-radius: 10px;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  color: $color-text;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+
+  &::placeholder {
+    color: #b0a89e;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.settings__textarea {
+  min-height: 100px;
+}
+
+.settings__footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.settings__btn {
+  padding: 12px 32px;
+  background-color: $color-primary;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+}
+
+.settings__saved {
+  font-size: $font-size-sm;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.settings__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 480px;
+}
+
+.settings__title {
+  font-size: 24px;
+  font-weight: 400;
+  color: $color-text;
+  margin-bottom: 8px;
+}
+
+.settings__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.settings__label {
+  font-size: $font-size-sm;
+  color: $color-text;
+  opacity: 0.65;
+  font-weight: 500;
+}
+
+.settings__input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d0c8c0;
+  border-radius: 10px;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  color: $color-text;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+
+  &::placeholder {
+    color: #b0a89e;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.settings__textarea {
+  min-height: 100px;
+}
+
+.settings__footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.settings__btn {
+  padding: 12px 32px;
+  background-color: $color-primary;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+}
+
+.settings__saved {
+  font-size: $font-size-sm;
+  color: #2e7d32;
+  font-weight: 500;
 }
