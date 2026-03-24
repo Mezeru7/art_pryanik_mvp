@@ -52,6 +52,7 @@ art-pryanik/
 │   │   │   ├── _typography.scss  # Типографические стили
 │   │   │   └── global.scss       # Сброс + базовые стили body
 │   │   ├── api/             # Запросы к REST API
+│   │   │   └── auth.js          # fetchMe, updateMe
 │   │   ├── config/          # Конфигурация frontend
 │   │   ├── App.jsx          # Роутинг
 │   │   └── main.jsx         # Точка входа
@@ -162,6 +163,7 @@ art-pryanik/
 | POST | `/api/auth/login` | Вход, получение JWT |
 | POST | `/api/auth/forgot-password` | Запрос сброса пароля (mock email) |
 | POST | `/api/auth/reset-password` | Сброс пароля по токену |
+| PATCH | `/api/auth/me` | Обновить данные текущего пользователя |
 | GET | `/api/products/:id` | Товар по ID |
 | POST | `/api/products` | Создать товар |
 | PUT | `/api/products/:id` | Обновить товар |
@@ -257,6 +259,7 @@ npm run dev
 - [x] Разграничение ролей (requireRole middleware, AdminRoute)
 - [x] Восстановление пароля (reset token, mock email, формы)
 - [x] Страница профиля пользователя (личный кабинет, навигация, аватар)
-- [x] Настройки профиля (форма редактирования имени, email, телефона, bio)
+- [x] Настройки профиля (форма редактирования имени, email, телефона, bio по Figma)
+- [x] Редактирование персональных данных (PATCH /api/auth/me, синхронизация с localStorage)
 - [ ] Блог
 - [ ] Административная панель

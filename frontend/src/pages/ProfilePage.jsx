@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO/SEO';
 import { useAuth } from '../context/AuthContext';
+import { updateMe } from '../api/auth';
 import styles from './ProfilePage.module.scss';
 
 const MOCK_USER = {
@@ -20,100 +21,126 @@ const NAV_ITEMS = [
 ];
 
 function SettingsTab({ displayUser }) {
+  const { token, updateUser } = useAuth();
   const [form, setForm] = useState({
-    first_name: displayUser.first_name || '',
-    last_name: displayUser.last_name || '',
-    email: displayUser.email || '',
+    full_name: `${displayUser.first_name || ''} ${displayUser.last_name || ''}`.trim(),
     phone: displayUser.phone || '',
+    email: displayUser.email || '',
     bio: displayUser.bio || '',
   });
-  const [saved, setSaved] = useState(false);
+  const [status, setStatus] = useState(null); // null | 'saving' | 'saved' | 'error'
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    setSaved(false);
+    setStatus(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Подключение к API будет реализовано позже
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
+    setStatus('saving');
+    setErrorMsg('');
+
+    // Разбиваем full_name на first_name и last_name
+    const parts = form.full_name.trim().split(/\s+/);
+    const first_name = parts[0] || '';
+    const last_name = parts.slice(1).join(' ') || '';
+
+    try {
+      const updated = await updateMe(token, {
+        first_name,
+        last_name,
+        email: form.email,
+        phone: form.phone,
+        bio: form.bio,
+      });
+      updateUser(updated);
+      setStatus('saved');
+      setTimeout(() => setStatus(null), 3000);
+    } catch (err) {
+      setErrorMsg(err.message);
+      setStatus('error');
+    }
   };
+
+  const handleResetPassword = () => {
+  };
+
+  const avatar = displayUser.avatar_url || MOCK_USER.avatar_url;
+  const firstName = displayUser.first_name || 'Пользователь';
+  const lastName = displayUser.last_name || '';
 
   return (
-    <form className={styles.settings__form} onSubmit={handleSubmit}>
-      <h2 className={styles.settings__title}>Настройки профиля</h2>
+    <div className={styles.settings__wrap}>
+      {/* Аватар */}
+      <div className={styles.settings__avatar_wrap}>
+        <img
+          src={avatar}
+          alt={`${firstName} ${lastName}`}
+          className={styles.settings__avatar}
+          loading="lazy"
+        />
+      </div>
 
-      <div className={styles.settings__row}>
-        <label className={styles.settings__label}>Имя</label>
+      <button className={styles.settings__upload_btn} type="button">
+        Загрузить новое изображение
+      </button>
+
+      {/* Форма */}
+      <form className={styles.settings__form} onSubmit={handleSubmit}>
         <input
           className={styles.settings__input}
           type="text"
-          name="first_name"
-          value={form.first_name}
+          name="full_name"
+          value={form.full_name}
           onChange={handleChange}
-          placeholder="Имя"
+          placeholder="Имя Фамилия"
         />
-      </div>
 
-      <div className={styles.settings__row}>
-        <label className={styles.settings__label}>Фамилия</label>
-        <input
-          className={styles.settings__input}
-          type="text"
-          name="last_name"
-          value={form.last_name}
-          onChange={handleChange}
-          placeholder="Фамилия"
-        />
-      </div>
-
-      <div className={styles.settings__row}>
-        <label className={styles.settings__label}>Email</label>
-        <input
-          className={styles.settings__input}
-          type="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          placeholder="Email"
-        />
-      </div>
-
-      <div className={styles.settings__row}>
-        <label className={styles.settings__label}>Телефон</label>
         <input
           className={styles.settings__input}
           type="tel"
           name="phone"
           value={form.phone}
           onChange={handleChange}
-          placeholder="+7 (___) ___-__-__"
+          placeholder="+7 928 179 75 86"
         />
-      </div>
 
-      <div className={styles.settings__row}>
-        <label className={styles.settings__label}>О себе</label>
+        <input
+          className={styles.settings__input}
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="example@gmail.com"
+        />
+
         <textarea
           className={`${styles.settings__input} ${styles.settings__textarea}`}
           name="bio"
           value={form.bio}
           onChange={handleChange}
-          placeholder="Расскажите о себе"
+          placeholder="Некоторый текст для описания профиля пользователя данного сайта"
           rows={4}
         />
-      </div>
 
-      <div className={styles.settings__footer}>
-        <button className={styles.settings__btn} type="submit">
-          Сохранить изменения
-        </button>
-        {saved && (
-          <span className={styles.settings__saved}>✓ Сохранено</span>
-        )}
-      </div>
-    </form>
+        <div className={styles.settings__footer}>
+          <button className={styles.settings__btn_save} type="submit" disabled={status === 'saving'}>
+            {status === 'saving' ? 'Сохранение...' : status === 'saved' ? '✓ Сохранено' : 'Сохранить изменения'}
+          </button>
+          {status === 'error' && (
+            <span className={styles.settings__error}>{errorMsg}</span>
+          )}
+          <button
+            className={styles.settings__btn_reset}
+            type="button"
+            onClick={handleResetPassword}
+          >
+            Сбросить пароль
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

@@ -39,4 +39,14 @@ const getMe = async (req, res) => {
   }
 };
 
-module.exports = { register, login, getMe };
+// PATCH /api/auth/me
+const updateMe = async (req, res) => {
+  try {
+    const result = await authService.updateMe(req.user.id, req.body);
+    res.json(result);
+  } catch (err) {
+    res.status(err.status || 500).json({ error: err.message });
+  }
+};
+
+module.exports = { register, login, getMe, updateMe };

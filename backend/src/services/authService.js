@@ -82,4 +82,33 @@ const getMe = async (userId) => {
   });
 };
 
-module.exports = { register, login, getMe };
+const updateMe = async (userId, data) => {
+  const { first_name, last_name, email, phone, bio } = data;
+
+  if (email) {
+    const { Op } = require('sequelize');
+    const existing = await User.findOne({
+      where: { email, id: { [Op.ne]: userId } },
+    });
+    if (existing) {
+      const err = new Error('Пользователь с таким email уже существует');
+      err.status = 409;
+      throw err;
+    }
+  }
+
+  const updateFields = {};
+  if (first_name !== undefined) updateFields.first_name = first_name;
+  if (last_name !== undefined) updateFields.last_name = last_name;
+  if (email !== undefined) updateFields.email = email;
+  if (phone !== undefined) updateFields.phone = phone;
+  if (bio !== undefined) updateFields.bio = bio;
+
+  await User.update(updateFields, { where: { id: userId } });
+
+  return User.findByPk(userId, {
+    attributes: ['id', 'first_name', 'last_name', 'email', 'phone', 'avatar_url', 'bio', 'role'],
+  });
+};
+
+module.exports = { register, login, getMe, updateMe };
