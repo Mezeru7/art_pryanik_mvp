@@ -176,7 +176,11 @@ art-pryanik/
 | PUT | `/api/categories/:id` | Обновить категорию |
 | DELETE | `/api/categories/:id` | Удалить категорию |
 | GET | `/api/blog` | Список статей блога |
+| GET | `/api/blog/slug/:slug` | Статья по slug |
 | GET | `/api/blog/:id` | Статья по ID |
+| POST | `/api/blog` | Создать статью (admin) |
+| PUT | `/api/blog/:id` | Обновить статью (admin) |
+| DELETE | `/api/blog/:id` | Удалить статью (admin) |
 | GET | `/api/orders` | Список заказов |
 | GET | `/api/orders/:id` | Заказ по ID |
 | POST | `/api/orders` | Создать заказ (с позициями) |
@@ -263,4 +267,5 @@ npm run dev
 - [x] Настройки профиля (форма редактирования имени, email, телефона, bio по Figma)
 - [x] Редактирование персональных данных (PATCH /api/auth/me, синхронизация с localStorage)
 - [x] Блог (список статей, пагинация, страница статьи, mock-данные)
+- [x] Backend блога (CRUD статей, slug, валидация, защита admin-маршрутов)
 - [ ] Административная панель

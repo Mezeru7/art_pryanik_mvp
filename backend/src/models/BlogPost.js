@@ -13,6 +13,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(255),
         allowNull: false,
       },
+      slug: {
+        type: DataTypes.STRING(300),
+        allowNull: true,
+        unique: true,
+      },
       preview_text: {
         type: DataTypes.TEXT,
         allowNull: true,
