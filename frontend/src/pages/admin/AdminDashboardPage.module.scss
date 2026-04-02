@@ -1,0 +1,80 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.dashboard {
+  max-width: 900px;
+}
+
+.dashboard__title {
+  font-size: 32px;
+  font-weight: 600;
+  color: $color-text;
+  margin-bottom: 8px;
+
+  @include mobile {
+    font-size: 24px;
+  }
+}
+
+.dashboard__subtitle {
+  font-size: $font-size-base;
+  color: $color-text;
+  opacity: 0.65;
+  margin-bottom: 40px;
+
+  @include mobile {
+    margin-bottom: 28px;
+  }
+}
+
+.dashboard__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.dashboard__card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 24px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  text-decoration: none;
+  color: $color-text;
+  border: 1px solid #e8e0d8;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+
+  &:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-color: $color-primary;
+    transform: translateY(-2px);
+  }
+}
+
+.dashboard__card_icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.dashboard__card_title {
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-text;
+}
+
+.dashboard__card_desc {
+  font-size: $font-size-sm;
+  color: $color-text;
+  opacity: 0.65;
+  line-height: 1.55;
+}

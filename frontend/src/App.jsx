@@ -22,6 +22,7 @@ const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const AdminDashboardPage = lazy(() => import('./pages/admin/AdminDashboardPage'));
 
 function App() {
   return (
@@ -60,6 +61,11 @@ function App() {
                   <PrivateRoute><OrdersPage /></PrivateRoute>
                 } />
                 <Route path="cart" element={<CartPage />} />
+
+                {/* Административная панель */}
+                <Route path="admin" element={
+                  <AdminRoute><AdminDashboardPage /></AdminRoute>
+                } />
 
                 <Route path="*" element={<NotFoundPage />} />
               </Route>

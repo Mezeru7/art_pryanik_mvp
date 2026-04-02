@@ -1,0 +1,194 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+$sidebar-width: 220px;
+$sidebar-bg: #2c2c2c;
+$sidebar-text: #ffffff;
+$sidebar-active-bg: $color-primary;
+$sidebar-hover-bg: rgba(255, 255, 255, 0.08);
+
+.admin {
+  display: flex;
+  min-height: 100vh;
+  background-color: $color-bg-light;
+}
+
+.admin__sidebar {
+  width: $sidebar-width;
+  flex-shrink: 0;
+  background-color: $sidebar-bg;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+
+  @include mobile {
+    width: 100%;
+    height: auto;
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+}
+
+.admin__sidebar_top {
+  padding: 32px 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  @include mobile {
+    padding: 0;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
+}
+
+.admin__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin-bottom: 16px;
+
+  @include mobile {
+    margin-bottom: 0;
+  }
+}
+
+.admin__logo_icon {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
+.admin__logo_text {
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $sidebar-text;
+}
+
+.admin__role {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: 500;
+  margin-bottom: 4px;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.admin__username {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.6);
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.admin__nav {
+  flex: 1;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+
+  @include mobile {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 4px;
+  }
+}
+
+.admin__nav_item {
+  display: block;
+  padding: 12px 20px;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+  border-radius: 0;
+
+  &:hover {
+    background-color: $sidebar-hover-bg;
+    color: $sidebar-text;
+  }
+
+  &--active {
+    background-color: $sidebar-active-bg;
+    color: $sidebar-text;
+  }
+
+  @include mobile {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: $font-size-sm;
+  }
+}
+
+.admin__sidebar_bottom {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @include mobile {
+    padding: 0;
+    border-top: none;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.admin__site_link {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $sidebar-text;
+  }
+}
+
+.admin__logout_btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: $font-size-sm;
+  font-family: $font-family-base;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  text-align: left;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: $sidebar-text;
+  }
+}
+
+.admin__content {
+  flex: 1;
+  margin-left: $sidebar-width;
+  padding: 40px 40px;
+  min-height: 100vh;
+
+  @include mobile {
+    margin-left: 0;
+    padding: 24px 16px;
+  }
+}
