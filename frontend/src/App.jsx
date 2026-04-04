@@ -23,6 +23,9 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AdminDashboardPage = lazy(() => import('./pages/admin/AdminDashboardPage'));
+const AdminProductsPage = lazy(() => import('./pages/admin/AdminProductsPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
 
 function App() {
   return (
@@ -40,6 +43,8 @@ function App() {
                 <Route path="blog/:slug" element={<BlogPostPage />} />
                 <Route path="about" element={<AboutPage />} />
                 <Route path="contacts" element={<ContactsPage />} />
+                <Route path="privacy" element={<PrivacyPolicyPage />} />
+                <Route path="cookie-policy" element={<CookiePolicyPage />} />
 
                 {/* Только для гостей */}
                 <Route path="login" element={
@@ -65,6 +70,9 @@ function App() {
                 {/* Административная панель */}
                 <Route path="admin" element={
                   <AdminRoute><AdminDashboardPage /></AdminRoute>
+                } />
+                <Route path="admin/products" element={
+                  <AdminRoute><AdminProductsPage /></AdminRoute>
                 } />
 
                 <Route path="*" element={<NotFoundPage />} />

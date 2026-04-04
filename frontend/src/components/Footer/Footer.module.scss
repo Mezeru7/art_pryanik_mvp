@@ -91,6 +91,13 @@
     padding-top: 16px;
     display: flex;
     justify-content: center;
+    gap: 32px;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
   }
 
   &__policy {

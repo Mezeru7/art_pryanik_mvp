@@ -20,7 +20,8 @@ art-pryanik/
 │   │   │   ├── ProductsSection/  # Секция "Наши пряники" (4 карточки)
 │   │   │   ├── ProductCard/      # Карточка товара
 │   │   │   ├── ReviewsSection/   # Секция "Отзывы клиентов" (слайдер)
-│   │   │   └── ContactForm/      # Форма обратной связи "Оставьте заявку"
+│   │   │   ├── ContactForm/      # Форма обратной связи "Оставьте заявку"
+│   │   │   └── CookieBanner/     # Баннер уведомления о cookie
 │   │   ├── pages/           # Страницы приложения
 │   │   │   ├── HomePage.jsx
 │   │   │   ├── AboutPage.jsx             # Страница "О нас"
@@ -37,6 +38,9 @@ art-pryanik/
 │   │   │   ├── ProfilePage.module.scss
 │   │   │   ├── OrdersPage.jsx            # История заказов
 │   │   │   ├── ContactsPage.module.scss
+│   │   │   ├── PrivacyPolicyPage.jsx          # Политика конфиденциальности
+│   │   │   ├── CookiePolicyPage.jsx           # Политика cookie
+│   │   │   ├── PolicyPage.module.scss         # Общие стили для страниц политик
 │   │   │   ├── BlogPage.jsx
 │   │   │   ├── ProfilePage.jsx
 │   │   │   └── NotFoundPage.jsx
@@ -154,7 +158,10 @@ art-pryanik/
 | `/register` | Регистрация |
 | `/forgot-password` | Забыли пароль |
 | `/reset-password` | Сброс пароля |
+| `/privacy` | Политика конфиденциальности |
+| `/cookie-policy` | Политика использования cookie |
 | `/admin` | Dashboard админ-панели |
+| `/admin/products` | Управление товарами (CRUD) |
 | `*` | 404 |
 
 ## API эндпоинты
@@ -270,3 +277,7 @@ npm run dev
 - [x] Блог (список статей, пагинация, страница статьи, mock-данные)
 - [x] Backend блога (CRUD статей, slug, валидация, защита admin-маршрутов)
 - [x] Административная панель — layout и Dashboard (sidebar, карточки разделов)
+- [x] Страница политики конфиденциальности (/privacy)
+- [x] Страница политики использования cookie (/cookie-policy)
+- [x] Cookie-баннер (уведомление снизу экрана, согласие в localStorage)
+- [x] Управление товарами в админке (CRUD: таблица, создание, редактирование, удаление)

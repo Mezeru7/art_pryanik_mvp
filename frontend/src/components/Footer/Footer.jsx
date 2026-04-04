@@ -43,6 +43,9 @@ function Footer() {
           <Link to="/privacy" className={styles.footer__policy}>
             Политика конфиденциальности
           </Link>
+          <Link to="/cookie-policy" className={styles.footer__policy}>
+            Политика cookie
+          </Link>
         </div>
 
       </div>
