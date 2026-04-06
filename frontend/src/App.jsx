@@ -24,6 +24,7 @@ const ContactsPage = lazy(() => import('./pages/ContactsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AdminDashboardPage = lazy(() => import('./pages/admin/AdminDashboardPage'));
 const AdminProductsPage = lazy(() => import('./pages/admin/AdminProductsPage'));
+const AdminOrdersPage = lazy(() => import('./pages/admin/AdminOrdersPage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
 
@@ -73,6 +74,9 @@ function App() {
                 } />
                 <Route path="admin/products" element={
                   <AdminRoute><AdminProductsPage /></AdminRoute>
+                } />
+                <Route path="admin/orders" element={
+                  <AdminRoute><AdminOrdersPage /></AdminRoute>
                 } />
 
                 <Route path="*" element={<NotFoundPage />} />
