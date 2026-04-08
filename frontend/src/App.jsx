@@ -25,6 +25,7 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AdminDashboardPage = lazy(() => import('./pages/admin/AdminDashboardPage'));
 const AdminProductsPage = lazy(() => import('./pages/admin/AdminProductsPage'));
 const AdminOrdersPage = lazy(() => import('./pages/admin/AdminOrdersPage'));
+const AdminBlogPage = lazy(() => import('./pages/admin/AdminBlogPage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
 
@@ -62,7 +63,9 @@ function App() {
                 } />
 
                 {/* Только для авторизованных */}
-                <Route path="profile" element={<ProfilePage />} />
+                <Route path="profile" element={
+                  <PrivateRoute><ProfilePage /></PrivateRoute>
+                } />
                 <Route path="orders" element={
                   <PrivateRoute><OrdersPage /></PrivateRoute>
                 } />
@@ -77,6 +80,9 @@ function App() {
                 } />
                 <Route path="admin/orders" element={
                   <AdminRoute><AdminOrdersPage /></AdminRoute>
+                } />
+                <Route path="admin/blog" element={
+                  <AdminRoute><AdminBlogPage /></AdminRoute>
                 } />
 
                 <Route path="*" element={<NotFoundPage />} />
