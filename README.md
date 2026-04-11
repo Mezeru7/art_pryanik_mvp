@@ -221,6 +221,16 @@ docker-compose up --build
 - Frontend: `http://localhost:3000`
 - Backend: `http://localhost:5000`
 
+## Запуск через Docker (production)
+
+```bash
+# 1. Создать backend/.env на основе backend/.env.example
+# 2. Создать frontend/.env с VITE_API_URL=/api
+docker-compose -f docker-compose.prod.yml up --build -d
+```
+
+- Приложение: `http://localhost` (порт 80, через Nginx)
+
 ## Запуск frontend (разработка)
 
 ```bash
@@ -286,3 +296,4 @@ npm run dev
 - [x] Управление заказами в админке (список, фильтр по статусу, просмотр, смена статуса)
 - [x] Управление блогом в админке (CRUD статей: таблица, создание, редактирование, удаление)
 - [x] Ограничение доступа к админ-панели по ролям (AdminRoute, requireRole middleware, защита всех admin-роутов)
+- [x] Production Docker-конфигурация (Dockerfile для frontend/backend, docker-compose.prod.yml, nginx.prod.conf)
