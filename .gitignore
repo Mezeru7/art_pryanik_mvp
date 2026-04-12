@@ -16,6 +16,10 @@ build/
 */.env.local
 backend/.env
 frontend/.env
+backend/.env.development
+backend/.env.production
+frontend/.env.development
+frontend/.env.production
 
 # Logs
 logs/

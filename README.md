@@ -297,3 +297,4 @@ npm run dev
 - [x] Управление блогом в админке (CRUD статей: таблица, создание, редактирование, удаление)
 - [x] Ограничение доступа к админ-панели по ролям (AdminRoute, requireRole middleware, защита всех admin-роутов)
 - [x] Production Docker-конфигурация (Dockerfile для frontend/backend, docker-compose.prod.yml, nginx.prod.conf)
+- [x] Разделение dev/production конфигураций (.env.development, .env.production для frontend и backend)
