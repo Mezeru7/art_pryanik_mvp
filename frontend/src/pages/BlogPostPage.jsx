@@ -23,6 +23,9 @@ function BlogPostPage() {
         description={post.preview_text}
         image={post.image_url}
         path={`/blog/${post.slug}`}
+        type="article"
+        publishedAt={post.created_at}
+        author={post.author ? `${post.author.first_name} ${post.author.last_name || ''}`.trim() : undefined}
       />
 
       <article className={styles.post}>

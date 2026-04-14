@@ -299,3 +299,4 @@ npm run dev
 - [x] Production Docker-конфигурация (Dockerfile для frontend/backend, docker-compose.prod.yml, nginx.prod.conf)
 - [x] Разделение dev/production конфигураций (.env.development, .env.production для frontend и backend)
 - [x] HTTPS и nginx reverse proxy (nginx.https.conf, SSL-заголовки, HTTP в HTTPS редирект, скрипт генерации сертификата)
+- [x] OpenGraph для всех страниц (og:type, og:locale, article meta)

@@ -162,7 +162,7 @@ function ProfilePage() {
 
   return (
     <>
-      <SEO title="Личный кабинет" description="Личный кабинет Арт-Пряник" path="/profile" />
+      <SEO title="Личный кабинет" description="Личный кабинет Арт-Пряник — управляйте профилем, просматривайте заказы и настройки аккаунта." path="/profile" />
 
       {/* Hero */}
       <section className={styles.profile__hero}>
