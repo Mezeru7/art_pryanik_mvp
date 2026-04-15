@@ -11,6 +11,9 @@
 html {
   font-size: $font-size-base;
   scroll-behavior: smooth;
+  // Улучшение рендеринга текста
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -19,6 +22,9 @@ body {
   background-color: $color-bg-home;
   line-height: 1.5;
   min-width: $bp-mobile;
+  // Сглаживание шрифтов
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -29,6 +35,8 @@ a {
 img {
   max-width: 100%;
   display: block;
+  // Предотвращение layout shift при загрузке изображений
+  height: auto;
 }
 
 ul,

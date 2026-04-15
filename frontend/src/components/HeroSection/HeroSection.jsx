@@ -27,6 +27,8 @@ function HeroSection() {
             src="/assets/images/hero.png"
             alt="Пряник ручной работы"
             className={styles.hero__image}
+            loading="eager"
+            fetchpriority="high"
           />
         </div>
 

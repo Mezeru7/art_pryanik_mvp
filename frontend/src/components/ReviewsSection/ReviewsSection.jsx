@@ -43,6 +43,7 @@ function ReviewsSection() {
                 src={REVIEWS[getIndex(-1)].avatar}
                 alt={REVIEWS[getIndex(-1)].name}
                 className={styles.reviews__avatar}
+                loading="lazy"
               />
               <span className={styles.reviews__name}>{REVIEWS[getIndex(-1)].name}</span>
             </div>
@@ -63,6 +64,7 @@ function ReviewsSection() {
                 src={REVIEWS[active].avatar}
                 alt={REVIEWS[active].name}
                 className={styles.reviews__avatar}
+                loading="lazy"
               />
               <span className={styles.reviews__name}>{REVIEWS[active].name}</span>
             </div>
@@ -83,6 +85,7 @@ function ReviewsSection() {
                 src={REVIEWS[getIndex(1)].avatar}
                 alt={REVIEWS[getIndex(1)].name}
                 className={styles.reviews__avatar}
+                loading="lazy"
               />
               <span className={styles.reviews__name}>{REVIEWS[getIndex(1)].name}</span>
             </div>

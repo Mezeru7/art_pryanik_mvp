@@ -300,3 +300,4 @@ npm run dev
 - [x] Разделение dev/production конфигураций (.env.development, .env.production для frontend и backend)
 - [x] HTTPS и nginx reverse proxy (nginx.https.conf, SSL-заголовки, HTTP в HTTPS редирект, скрипт генерации сертификата)
 - [x] OpenGraph для всех страниц (og:type, og:locale, article meta)
+- [x] Оптимизация Lighthouse/PageSpeed (vite manualChunks, fetchpriority, lazy loading, font-smoothing, nginx кэширование, security headers)
