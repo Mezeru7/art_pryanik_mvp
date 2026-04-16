@@ -198,6 +198,19 @@ art-pryanik/
 | POST | `/api/requests` | Создать заявку |
 | GET | `/api/requests` | Список заявок |
 
+## Тестирование API (Postman)
+
+Коллекция находится в папке `postman/`:
+
+- `Art-Pryanik-API.postman_collection.json` — все эндпоинты
+- `Art-Pryanik-Local.postman_environment.json` — окружение для локальной разработки
+
+**Импорт в Postman:**
+1. File → Import → выбрать оба файла
+2. Выбрать окружение «Art-Pryanik Local»
+3. Выполнить запрос **Login** — токен сохранится автоматически в переменную `{{token}}`
+4. Все защищённые запросы будут использовать токен автоматически
+
 ## Линтинг и форматирование
 
 ```bash
@@ -301,3 +314,4 @@ npm run dev
 - [x] HTTPS и nginx reverse proxy (nginx.https.conf, SSL-заголовки, HTTP в HTTPS редирект, скрипт генерации сертификата)
 - [x] OpenGraph для всех страниц (og:type, og:locale, article meta)
 - [x] Оптимизация Lighthouse/PageSpeed (vite manualChunks, fetchpriority, lazy loading, font-smoothing, nginx кэширование, security headers)
+- [x] Postman-коллекция (все эндпоинты API, автосохранение токена, окружение для локальной разработки)
