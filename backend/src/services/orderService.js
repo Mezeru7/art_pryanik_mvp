@@ -58,4 +58,11 @@ const updateStatus = async (id, status) => {
   return order.update({ status });
 };
 
-module.exports = { getAll, getById, create, updateStatus };
+const remove = async (id) => {
+  const order = await Order.findByPk(id);
+  if (!order) return null;
+  await order.destroy();
+  return true;
+};
+
+module.exports = { getAll, getById, create, updateStatus, remove };

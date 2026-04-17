@@ -16,6 +16,7 @@ const EMPTY_FORM = {
   description: '',
   price: '',
   category_id: '',
+  image_url: '',
 };
 
 function ProductModal({ product, categories, onSave, onClose, loading }) {
@@ -27,6 +28,7 @@ function ProductModal({ product, categories, onSave, onClose, loading }) {
           description: product.description || '',
           price: product.price ?? '',
           category_id: product.category_id ?? '',
+          image_url: product.ProductImages?.[0]?.image_url || '',
         }
       : EMPTY_FORM
   );
@@ -55,6 +57,7 @@ function ProductModal({ product, categories, onSave, onClose, loading }) {
       description: form.description.trim() || null,
       price: Number(form.price),
       category_id: form.category_id ? Number(form.category_id) : null,
+      image_url: form.image_url.trim() || null,
     });
   };
 
@@ -123,6 +126,21 @@ function ProductModal({ product, categories, onSave, onClose, loading }) {
                 </option>
               ))}
             </select>
+          </div>
+
+          <div className={styles.form__group}>
+            <label className={styles.form__label} htmlFor="image_url">
+              URL изображения
+            </label>
+            <input
+              id="image_url"
+              name="image_url"
+              type="text"
+              className={styles.form__input}
+              value={form.image_url}
+              onChange={handleChange}
+              placeholder="/assets/images/heart_flowers.png"
+            />
           </div>
 
           <div className={styles.form__group}>
@@ -211,7 +229,6 @@ function AdminProductsPage() {
   const [loadingData, setLoadingData] = useState(true);
   const [fetchError, setFetchError] = useState('');
 
-  // Модальные окна
   const [editModal, setEditModal] = useState(null);   // null | product object | {}
   const [deleteModal, setDeleteModal] = useState(null); // null | product object
   const [saving, setSaving] = useState(false);

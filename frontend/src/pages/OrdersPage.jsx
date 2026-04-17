@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO/SEO';
+import { useAuth } from '../context/AuthContext';
 import styles from './OrdersPage.module.scss';
 
-const ORDERS_KEY = 'art_pryanik_orders';
+const getOrdersKey = (userId) =>
+  userId ? `art_pryanik_orders_${userId}` : 'art_pryanik_orders_guest';
 
 const STATUS_LABELS = {
   new: 'Новый',
@@ -21,15 +23,17 @@ const STATUS_COLORS = {
 
 function OrdersPage() {
   const [orders, setOrders] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem(ORDERS_KEY);
+      const key = getOrdersKey(user?.id);
+      const stored = localStorage.getItem(key);
       setOrders(stored ? JSON.parse(stored) : []);
     } catch {
       setOrders([]);
     }
-  }, []);
+  }, [user]);
 
   return (
     <>

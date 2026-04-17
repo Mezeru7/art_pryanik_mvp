@@ -4,9 +4,10 @@ const orderController = require('../../controllers/orderController');
 const auth = require('../../middleware/auth');
 const requireRole = require('../../middleware/requireRole');
 
-router.get('/', auth, requireRole('admin'), orderController.getAll);   // только admin
-router.get('/:id', auth, orderController.getById);                     // авторизованный
-router.post('/', orderController.create);                              // публичный (гостевые заказы)
-router.patch('/:id/status', auth, requireRole('admin'), orderController.updateStatus); // только admin
+router.get('/', auth, requireRole('admin'), orderController.getAll);
+router.get('/:id', auth, orderController.getById);
+router.post('/', orderController.create);
+router.patch('/:id/status', auth, requireRole('admin'), orderController.updateStatus);
+router.delete('/:id', auth, requireRole('admin'), orderController.remove);
 
 module.exports = router;

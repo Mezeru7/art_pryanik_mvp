@@ -24,11 +24,7 @@ function AdminLayout({ children }) {
       <aside className={styles.admin__sidebar}>
         <div className={styles.admin__sidebar_top}>
           <NavLink to="/" className={styles.admin__logo}>
-            <img
-              src="/assets/icons/logo.svg"
-              alt="Арт-Пряник"
-              className={styles.admin__logo_icon}
-            />
+            <span className={styles.admin__logo_badge}>АП</span>
             <span className={styles.admin__logo_text}>Арт-Пряник</span>
           </NavLink>
 

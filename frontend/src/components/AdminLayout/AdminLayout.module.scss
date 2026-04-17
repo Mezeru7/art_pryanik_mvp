@@ -70,6 +70,21 @@ $sidebar-hover-bg: rgba(255, 255, 255, 0.08);
   filter: brightness(0) invert(1);
 }
 
+.admin__logo_badge {
+  width: 32px;
+  height: 32px;
+  background-color: $color-primary;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
 .admin__logo_text {
   font-size: $font-size-base;
   font-weight: 600;

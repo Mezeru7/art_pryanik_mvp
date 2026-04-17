@@ -66,4 +66,15 @@ const updateStatus = async (req, res) => {
   }
 };
 
-module.exports = { getAll, getById, create, updateStatus };
+// DELETE /api/orders/:id
+const remove = async (req, res) => {
+  try {
+    const result = await orderService.remove(req.params.id);
+    if (!result) return res.status(404).json({ error: 'Заказ не найден' });
+    res.status(204).send();
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+module.exports = { getAll, getById, create, updateStatus, remove };

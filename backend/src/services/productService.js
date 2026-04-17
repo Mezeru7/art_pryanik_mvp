@@ -22,13 +22,31 @@ const getById = async (id) => {
 };
 
 const create = async (data) => {
-  return Product.create(data);
+  const { image_url, ...productData } = data;
+  const product = await Product.create(productData);
+
+  if (image_url && image_url.trim()) {
+    await ProductImage.create({ product_id: product.id, image_url: image_url.trim() });
+  }
+
+  return getById(product.id);
 };
 
 const update = async (id, data) => {
   const product = await Product.findByPk(id);
   if (!product) return null;
-  return product.update(data);
+
+  const { image_url, ...productData } = data;
+  await product.update(productData);
+
+  if (image_url !== undefined) {
+    await ProductImage.destroy({ where: { product_id: id } });
+    if (image_url && image_url.trim()) {
+      await ProductImage.create({ product_id: id, image_url: image_url.trim() });
+    }
+  }
+
+  return getById(id);
 };
 
 const remove = async (id) => {

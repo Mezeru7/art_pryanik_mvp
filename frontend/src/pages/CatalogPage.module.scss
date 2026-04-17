@@ -130,7 +130,6 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 
-  // Сбрасываем фиксированную ширину карточки
   > * {
     width: 100% !important;
     flex: unset !important;
@@ -186,4 +185,40 @@
   &:hover:not(&--active) {
     background-color: $color-hero-circle;
   }
+}
+
+.catalog__loading {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.catalog__skeleton {
+  height: 280px;
+  background: linear-gradient(90deg, #f0ebe4 25%, #fdf8f4 50%, #f0ebe4 75%);
+  background-size: 200% 100%;
+  border-radius: 16px;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.catalog__error {
+  font-size: $font-size-base;
+  color: #e74c3c;
+  padding: 16px;
+}
+
+.catalog__empty {
+  font-size: $font-size-base;
+  color: $color-text;
+  opacity: 0.6;
+  padding: 40px 0;
 }

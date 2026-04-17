@@ -177,3 +177,37 @@
     text-decoration-color: $color-primary;
   }
 }
+
+.contact__input--error {
+  border-color: #e74c3c;
+}
+
+.contact__error {
+  font-size: $font-size-sm;
+  color: #e74c3c;
+  margin-top: -8px;
+}
+
+.contact__success {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+}
+
+.contact__success_text {
+  font-size: $font-size-base;
+  color: $color-text;
+  line-height: 1.6;
+}
+
+.contact__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

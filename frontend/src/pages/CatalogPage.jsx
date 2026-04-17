@@ -1,16 +1,46 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SEO from '../components/SEO/SEO';
 import ProductCard from '../components/ProductCard/ProductCard';
-import { CATALOG_PRODUCTS, CATEGORIES, ITEMS_PER_PAGE } from '../data/catalogProducts';
+import API_URL from '../config/api';
 import styles from './CatalogPage.module.scss';
 
+const ITEMS_PER_PAGE = 9;
+
 function CatalogPage() {
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
   const [activeCategory, setActiveCategory] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
+  useEffect(() => {
+    const load = async () => {
+      setLoading(true);
+      setError('');
+      try {
+        const [prodRes, catRes] = await Promise.all([
+          fetch(`${API_URL}/products`),
+          fetch(`${API_URL}/categories`),
+        ]);
+        if (!prodRes.ok) throw new Error('Не удалось загрузить товары');
+        if (!catRes.ok) throw new Error('Не удалось загрузить категории');
+        const [prods, cats] = await Promise.all([prodRes.json(), catRes.json()]);
+        setProducts(prods);
+        setCategories(cats);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
+
   const filtered = activeCategory
-    ? CATALOG_PRODUCTS.filter((p) => p.category === activeCategory)
-    : CATALOG_PRODUCTS;
+    ? products.filter((p) => p.category_id === activeCategory)
+    : products;
 
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
   const paginated = filtered.slice(
@@ -18,14 +48,19 @@ function CatalogPage() {
     currentPage * ITEMS_PER_PAGE
   );
 
-  const handleCategory = (cat) => {
-    setActiveCategory(cat);
+  const handleCategory = (catId) => {
+    setActiveCategory(catId);
     setCurrentPage(1);
   };
 
   const handleReset = () => {
     setActiveCategory(null);
     setCurrentPage(1);
+  };
+
+  const getProductImage = (product) => {
+    if (product.ProductImages?.length > 0) return product.ProductImages[0].image_url;
+    return '/assets/images/heart_flowers.png'; // fallback
   };
 
   return (
@@ -50,18 +85,18 @@ function CatalogPage() {
       <section className={styles.catalog__main}>
         <div className={styles.catalog__container}>
 
-          {/* Фильтр */}
+          {/* Фильтр по категориям */}
           <aside className={styles.catalog__filter}>
             <h2 className={styles.catalog__filter_title}>Категории</h2>
             <ul className={styles.catalog__filter_list}>
-              {CATEGORIES.map((cat) => (
-                <li key={cat}>
+              {categories.map((cat) => (
+                <li key={cat.id}>
                   <button
-                    className={`${styles.catalog__filter_btn} ${activeCategory === cat ? styles['catalog__filter_btn--active'] : ''}`}
-                    onClick={() => handleCategory(cat)}
+                    className={`${styles.catalog__filter_btn} ${activeCategory === cat.id ? styles['catalog__filter_btn--active'] : ''}`}
+                    onClick={() => handleCategory(cat.id)}
                     type="button"
                   >
-                    {cat}
+                    {cat.name}
                   </button>
                 </li>
               ))}
@@ -78,50 +113,68 @@ function CatalogPage() {
           {/* Товары */}
           <div className={styles.catalog__products}>
             <h2 className={styles.catalog__products_title}>Товары</h2>
-            <div className={styles.catalog__grid}>
-              {paginated.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  image={product.image}
-                  title={product.title}
-                  price={product.price}
-                  slug={product.slug}
-                />
-              ))}
-            </div>
 
-            {/* Страницы */}
-            {totalPages > 1 && (
-              <div className={styles.catalog__pagination}>
-                <button
-                  className={styles.catalog__page_arrow}
-                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                  disabled={currentPage === 1}
-                  aria-label="Предыдущая страница"
-                >
-                  &lt;
-                </button>
-
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <button
-                    key={page}
-                    className={`${styles.catalog__page_num} ${currentPage === page ? styles['catalog__page_num--active'] : ''}`}
-                    onClick={() => setCurrentPage(page)}
-                    type="button"
-                  >
-                    {page}
-                  </button>
+            {loading && (
+              <div className={styles.catalog__loading}>
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className={styles.catalog__skeleton} />
                 ))}
-
-                <button
-                  className={styles.catalog__page_arrow}
-                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                  disabled={currentPage === totalPages}
-                  aria-label="Следующая страница"
-                >
-                  &gt;
-                </button>
               </div>
+            )}
+
+            {error && (
+              <p className={styles.catalog__error}>{error}</p>
+            )}
+
+            {!loading && !error && filtered.length === 0 && (
+              <p className={styles.catalog__empty}>Товаров пока нет</p>
+            )}
+
+            {!loading && !error && filtered.length > 0 && (
+              <>
+                <div className={styles.catalog__grid}>
+                  {paginated.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      image={getProductImage(product)}
+                      title={product.title}
+                      price={`${Number(product.price).toLocaleString('ru-RU')} ₽`}
+                      slug={String(product.id)}
+                    />
+                  ))}
+                </div>
+
+                {totalPages > 1 && (
+                  <div className={styles.catalog__pagination}>
+                    <button
+                      className={styles.catalog__page_arrow}
+                      onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                      disabled={currentPage === 1}
+                      aria-label="Предыдущая страница"
+                    >
+                      &lt;
+                    </button>
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <button
+                        key={page}
+                        className={`${styles.catalog__page_num} ${currentPage === page ? styles['catalog__page_num--active'] : ''}`}
+                        onClick={() => setCurrentPage(page)}
+                        type="button"
+                      >
+                        {page}
+                      </button>
+                    ))}
+                    <button
+                      className={styles.catalog__page_arrow}
+                      onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                      disabled={currentPage === totalPages}
+                      aria-label="Следующая страница"
+                    >
+                      &gt;
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </div>
 

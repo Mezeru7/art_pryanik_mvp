@@ -26,11 +26,20 @@ export const fetchOrderById = async (token, id) => {
 };
 
 /**
- * Обновить статус заказа (только admin)
+ * Удалить заказ (только admin)
  * @param {string} token
  * @param {number} id
- * @param {'new'|'processing'|'completed'|'cancelled'} status
  */
+export const deleteOrder = async (token, id) => {
+  const res = await fetch(`${API_URL}/orders/${id}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || 'Не удалось удалить заказ');
+  }
+};
 export const updateOrderStatus = async (token, id, status) => {
   const res = await fetch(`${API_URL}/orders/${id}/status`, {
     method: 'PATCH',

@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO/SEO';
+import { useAuth } from '../context/AuthContext';
+import API_URL from '../config/api';
 import styles from './AuthPage.module.scss';
 
 function RegisterPage() {
@@ -11,6 +13,11 @@ function RegisterPage() {
     password: '',
   });
   const [errors, setErrors] = useState({});
+  const [serverError, setServerError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const validate = () => {
     const errs = {};
@@ -27,14 +34,45 @@ function RegisterPage() {
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     setErrors((prev) => ({ ...prev, [e.target.name]: '' }));
+    setServerError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
       return;
+    }
+
+    setLoading(true);
+    setServerError('');
+
+    try {
+      const res = await fetch(`${API_URL}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name: form.first_name.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim(),
+          password: form.password,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setServerError(data.error || 'Ошибка регистрации');
+        return;
+      }
+
+      login(data.token, data.user);
+      navigate('/');
+    } catch {
+      setServerError('Не удалось подключиться к серверу');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -55,6 +93,7 @@ function RegisterPage() {
               value={form.first_name}
               onChange={handleChange}
               autoComplete="given-name"
+              disabled={loading}
             />
             {errors.first_name && <p className={styles.auth__error}>{errors.first_name}</p>}
 
@@ -66,6 +105,7 @@ function RegisterPage() {
               value={form.phone}
               onChange={handleChange}
               autoComplete="tel"
+              disabled={loading}
             />
             {errors.phone && <p className={styles.auth__error}>{errors.phone}</p>}
 
@@ -77,6 +117,7 @@ function RegisterPage() {
               value={form.email}
               onChange={handleChange}
               autoComplete="email"
+              disabled={loading}
             />
             {errors.email && <p className={styles.auth__error}>{errors.email}</p>}
 
@@ -88,8 +129,11 @@ function RegisterPage() {
               value={form.password}
               onChange={handleChange}
               autoComplete="new-password"
+              disabled={loading}
             />
             {errors.password && <p className={styles.auth__error}>{errors.password}</p>}
+
+            {serverError && <p className={styles.auth__error}>{serverError}</p>}
 
             <div className={styles.auth__links}>
               <Link to="/login" className={styles.auth__link}>Есть аккаунт?</Link>
@@ -102,8 +146,8 @@ function RegisterPage() {
               </Link>
             </p>
 
-            <button className={styles.auth__btn} type="submit">
-              Зарегистрироваться
+            <button className={styles.auth__btn} type="submit" disabled={loading}>
+              {loading ? 'Регистрация...' : 'Зарегистрироваться'}
             </button>
           </form>
         </div>

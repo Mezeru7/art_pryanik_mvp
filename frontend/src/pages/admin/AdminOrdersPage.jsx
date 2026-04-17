@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import AdminLayout from '../../components/AdminLayout/AdminLayout';
 import SEO from '../../components/SEO/SEO';
 import { useAuth } from '../../context/AuthContext';
-import { fetchOrders, updateOrderStatus } from '../../api/orders';
+import { fetchOrders, updateOrderStatus, deleteOrder } from '../../api/orders';
 import styles from './AdminOrdersPage.module.scss';
 
 const STATUS_CONFIG = {
@@ -175,6 +175,7 @@ function AdminOrdersPage() {
   const [actionError, setActionError] = useState('');
 
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [deleteModal, setDeleteModal] = useState(null);
   const [saving, setSaving] = useState(false);
 
   const [filterStatus, setFilterStatus] = useState('all');
@@ -201,12 +202,25 @@ function AdminOrdersPage() {
     setActionError('');
     try {
       await updateOrderStatus(token, id, status);
-      // Обновляем локально без перезагрузки всего списка
       setOrders((prev) =>
         prev.map((o) => (o.id === id ? { ...o, status } : o))
       );
-      // Обновляем открытый заказ
       setSelectedOrder((prev) => (prev?.id === id ? { ...prev, status } : prev));
+    } catch (err) {
+      setActionError(err.message);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!deleteModal) return;
+    setSaving(true);
+    setActionError('');
+    try {
+      await deleteOrder(token, deleteModal.id);
+      setOrders((prev) => prev.filter((o) => o.id !== deleteModal.id));
+      setDeleteModal(null);
     } catch (err) {
       setActionError(err.message);
     } finally {
@@ -324,6 +338,14 @@ function AdminOrdersPage() {
                           >
                             Просмотр
                           </button>
+                          <button
+                            className={styles.btn__delete}
+                            onClick={() => { setActionError(''); setDeleteModal(order); }}
+                            type="button"
+                            aria-label={`Удалить заказ ${order.order_code}`}
+                          >
+                            Удалить
+                          </button>
                         </td>
                       </tr>
                     );
@@ -352,6 +374,34 @@ function AdminOrdersPage() {
           onStatusChange={handleStatusChange}
           saving={saving}
         />
+      )}
+
+      {/* Подтверждение удаления */}
+      {deleteModal && (
+        <div className={styles.modal__overlay} onClick={() => setDeleteModal(null)}>
+          <div
+            className={`${styles.modal} ${styles.modal__confirm}`}
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+          >
+            <div className={styles.modal__header}>
+              <h2 className={styles.modal__title}>Удалить заказ?</h2>
+              <button className={styles.modal__close} onClick={() => setDeleteModal(null)} type="button" aria-label="Закрыть">✕</button>
+            </div>
+            <p className={styles.confirm__text}>
+              Вы уверены, что хотите удалить заказ <strong>{deleteModal.order_code}</strong>? Это действие необратимо.
+            </p>
+            <div className={styles.modal__footer}>
+              <button type="button" className={styles.btn__secondary} onClick={() => setDeleteModal(null)} disabled={saving}>
+                Отмена
+              </button>
+              <button type="button" className={styles.btn__danger} onClick={handleDelete} disabled={saving}>
+                {saving ? 'Удаление...' : 'Удалить'}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </AdminLayout>
   );

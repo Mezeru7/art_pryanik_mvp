@@ -11,6 +11,9 @@ export function useCartSync(items, removeItem) {
         if (!res.ok) return;
 
         const serverProducts = await res.json();
+
+        if (!serverProducts || serverProducts.length === 0) return;
+
         const serverIds = new Set(serverProducts.map((p) => p.id));
 
         items.forEach((item) => {
