@@ -129,6 +129,7 @@ art-pryanik/
 | База данных | MySQL, Sequelize ORM |
 | Аутентификация | JWT |
 | DevOps | Docker, docker-compose, Nginx |
+| Аналитика | Яндекс Метрика (вебвизор, карта кликов, ecommerce) |
 
 ## Разделы приложения
 
@@ -195,6 +196,7 @@ art-pryanik/
 | GET | `/api/orders/:id` | Заказ по ID |
 | POST | `/api/orders` | Создать заказ (с позициями) |
 | PATCH | `/api/orders/:id/status` | Обновить статус заказа |
+| DELETE | `/api/orders/:id` | Удалить заказ (admin) |
 | POST | `/api/requests` | Создать заявку |
 | GET | `/api/requests` | Список заявок |
 
@@ -315,3 +317,13 @@ npm run dev
 - [x] OpenGraph для всех страниц (og:type, og:locale, article meta)
 - [x] Оптимизация Lighthouse/PageSpeed (vite manualChunks, fetchpriority, lazy loading, font-smoothing, nginx кэширование, security headers)
 - [x] Postman-коллекция (все эндпоинты API, автосохранение токена, окружение для локальной разработки)
+- [x] Каталог и страница товара подключены к реальному API (GET /api/products, GET /api/products/:id)
+- [x] Оформление заказа через модальное окно (POST /api/orders, имя + телефон покупателя)
+- [x] История заказов привязана к пользователю (localStorage ключ по user.id)
+- [x] Форма заявки на главной подключена к API (POST /api/requests)
+- [x] Удаление заказов в админке (DELETE /api/orders/:id + подтверждение)
+- [x] Изображения товаров через ProductImages (поле image_url в форме создания/редактирования)
+- [x] CORS исправлен — добавлен метод PATCH
+- [x] Автосинхронизация таблиц БД при запуске (sequelize.sync)
+- [x] Seed-скрипт для наполнения БД тестовыми данными (database/seed.sql)
+- [x] Яндекс Метрика (счётчик, вебвизор, карта кликов, ecommerce)
