@@ -1,6 +1,16 @@
 USE art_pryanik_db;
 
-INSERT IGNORE INTO categories (name) VALUES
+SET FOREIGN_KEY_CHECKS=0;
+TRUNCATE TABLE product_images;
+TRUNCATE TABLE products;
+TRUNCATE TABLE categories;
+TRUNCATE TABLE users;
+SET FOREIGN_KEY_CHECKS=1;
+
+INSERT INTO users (first_name, last_name, email, password_hash, role, created_at) VALUES
+  ('Админ', 'Сайта', 'admin@artpryanik.ru', '$2a$10$5YNoxUoRgE3UfHnfxfvrj.dqooI1LSYDHrrno9RuVivHCO5xcVRhi', 'admin', NOW());
+
+INSERT INTO categories (name) VALUES
   ('Праздники'),
   ('Узоры'),
   ('Цветы'),

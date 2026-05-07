@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   frontend:
     build:
@@ -24,3 +22,28 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+    env_file:
+      - ./backend/.env.development
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_DATABASE: art_pryanik_db
+      MYSQL_USER: art_user
+      MYSQL_PASSWORD: art_password
+      MYSQL_ROOT_PASSWORD: art_password
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data:
